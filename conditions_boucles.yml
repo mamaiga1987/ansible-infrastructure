@@ -1,0 +1,59 @@
+---
+- name: MODULE 3 - Conditions et Boucles
+  hosts: local
+  vars:
+    environnement: "production"
+    services:
+      - nom: "ged-v2-backend"
+        port: 8767
+      - nom: "ged-v2-frontend"
+        port: 80
+      - nom: "chatbot-v2-backend"
+        port: 8766
+    dossiers_projets:
+      - /opt/ged-v2
+      - /opt/chatbot-v2
+      - /opt/rag-langchain
+      - /opt/rag-llamaindex
+      - /opt/agent-langgraph
+
+  tasks:
+    - name: Afficher message selon environnement
+      debug:
+        msg: "🚀 MODE PRODUCTION - Soyez prudent !"
+      when: environnement == "production"
+
+    - name: Afficher message développement
+      debug:
+        msg: "🛠️ Mode développement - Tests autorisés"
+      when: environnement == "development"
+
+    - name: Vérifier que chaque dossier projet existe
+      stat:
+        path: "{{ item }}"
+      register: dossier_info
+      loop: "{{ dossiers_projets }}"
+
+    - name: Afficher statut de chaque dossier
+      debug:
+        msg: "{{ item.item }} → {{ '✅ EXISTS' if item.stat.exists else '❌ MISSING' }}"
+      loop: "{{ dossier_info.results }}"
+
+    - name: Afficher la liste des services
+      debug:
+        msg: "Service : {{ item.nom }} sur le port {{ item.port }}"
+      loop: "{{ services }}"
+
+    - name: Vérifier que chaque port est ouvert
+      wait_for:
+        host: localhost
+        port: "{{ item.port }}"
+        timeout: 3
+      register: port_check
+      ignore_errors: yes
+      loop: "{{ services }}"
+
+    - name: Rapport statut des services
+      debug:
+        msg: "{{ item.item.nom }} port {{ item.item.port }} → {{ '✅ OUVERT' if not item.failed else '❌ FERME' }}"
+      loop: "{{ port_check.results }}"

@@ -1,0 +1,5 @@
+---
+# Variables fixes du projet
+db_host: "172.19.0.19"
+db_port: 5432
+db_name: "n8n"

@@ -1,0 +1,110 @@
+---
+- name: BLOC 4 - Audit de sécurité serveur
+  hosts: local
+  become: yes
+
+  tasks:
+    - name: "1. Vérifier les ports ouverts"
+      command: ss -tlnp
+      register: ports_ouverts
+
+    - name: "2. Afficher ports ouverts"
+      debug:
+        msg: "{{ ports_ouverts.stdout_lines }}"
+
+    - name: "3. Vérifier les connexions actives"
+      command: who
+      register: connexions
+
+    - name: "4. Afficher connexions"
+      debug:
+        msg: "{{ connexions.stdout_lines }}"
+
+    - name: "5. Compter tentatives SSH échouées"
+      shell: grep -c "Failed password" /var/log/auth.log || echo "0"
+      register: failed_logins
+
+    - name: "6. Afficher tentatives échouées"
+      debug:
+        msg: "⚠️ {{ failed_logins.stdout }} tentatives de connexion échouées"
+
+    - name: "7. Vérifier utilisateurs sudo"
+      command: grep -Po '^sudo.+:\K.*$' /etc/group
+      register: sudo_users
+      ignore_errors: yes
+
+    - name: "8. Afficher utilisateurs sudo"
+      debug:
+        msg: "Utilisateurs sudo : {{ sudo_users.stdout | default('aucun') }}"
+
+    - name: "9. Vérifier PermitRootLogin SSH"
+      shell: sshd -T | grep permitrootlogin
+      register: root_login
+      ignore_errors: yes
+
+    - name: "10. Statut Root Login"
+      debug:
+        msg: "{{ '⚠️ ROOT LOGIN AUTORISÉ !' if 'yes' in root_login.stdout else '✅ Root login désactivé' }}"
+
+    - name: "11. Vérifier les mises à jour de sécurité disponibles"
+      shell: apt list --upgradable 2>/dev/null | grep -c security || echo "0"
+      register: security_updates
+
+    - name: "12. Afficher mises à jour sécurité"
+      debug:
+        msg: "{{ '⚠️ ' + security_updates.stdout + ' mises à jour sécurité disponibles' if security_updates.stdout != '0' else '✅ Système à jour' }}"
+
+    - name: "13. Vérifier les fichiers SUID"
+      command: find /usr/bin /usr/sbin -perm -4000 -type f
+      register: suid_files
+      ignore_errors: yes
+
+    - name: "14. Afficher fichiers SUID"
+      debug:
+        msg: "Fichiers SUID : {{ suid_files.stdout_lines }}"
+
+    - name: "15. Générer rapport sécurité"
+      copy:
+        content: |
+          ══════════════════════════════════════
+          RAPPORT SÉCURITÉ — {{ ansible_date_time.date }}
+          ══════════════════════════════════════
+          Serveur  : {{ ansible_hostname }}
+          IP       : {{ ansible_default_ipv4.address }}
+          OS       : {{ ansible_distribution }} {{ ansible_distribution_version }}
+          Date     : {{ ansible_date_time.date }} {{ ansible_date_time.time }}
+
+          ── Connexions SSH ─────────────────────
+          {{ connexions.stdout | default('Aucune connexion active') }}
+
+          ── Tentatives échouées ────────────────
+          {{ failed_logins.stdout }} tentatives détectées
+
+          ── Root Login ─────────────────────────
+          {{ 'AUTORISÉ ⚠️' if 'yes' in root_login.stdout else 'Désactivé ✅' }}
+
+          ── Utilisateurs sudo ──────────────────
+          {{ sudo_users.stdout | default('Aucun') }}
+
+          ── Mises à jour sécurité ──────────────
+          {{ security_updates.stdout }} mises à jour disponibles
+
+          ── Fichiers SUID ──────────────────────
+          {{ suid_files.stdout | default('Aucun') }}
+
+          ── Ports ouverts ──────────────────────
+          {{ ports_ouverts.stdout }}
+          ══════════════════════════════════════
+        dest: /opt/ansible/rapports/securite_{{ ansible_date_time.date }}.txt
+        mode: '0600'
+
+    - name: "16. Résumé sécurité"
+      debug:
+        msg: |
+          ══════════════════════════════════════
+          🔐 AUDIT SÉCURITÉ TERMINÉ
+          ══════════════════════════════════════
+          Tentatives échouées : {{ failed_logins.stdout }}
+          Root Login          : {{ 'AUTORISÉ ⚠️' if 'yes' in root_login.stdout else 'Désactivé ✅' }}
+          Mises à jour        : {{ security_updates.stdout }} disponibles
+          Rapport             : /opt/ansible/rapports/securite_{{ ansible_date_time.date }}.txt

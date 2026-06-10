@@ -1,0 +1,47 @@
+---
+- name: Fix IP PostgreSQL — TOUS les projets Python
+  hosts: local
+
+  tasks:
+    - name: "1. Récupérer l'IP actuelle de PostgreSQL"
+      command: docker inspect debian-postgres-1 --format "{% raw %}{{.NetworkSettings.Networks.web.IPAddress}}{% endraw %}"
+      register: pg_ip
+
+    - name: "2. Afficher l'IP trouvée"
+      debug:
+        msg: "IP PostgreSQL actuelle : {{ pg_ip.stdout }}"
+
+    - name: "3. Chercher tous les fichiers Python dans /opt/"
+      find:
+        paths: /opt
+        patterns: "*.py"
+        recurse: yes
+      register: fichiers_python
+
+    - name: "4. Corriger l'IP dans TOUS les fichiers Python"
+      replace:
+        path: "{{ item.path }}"
+        regexp: '172\.19\.0\.\d+'
+        replace: "{{ pg_ip.stdout }}"
+      loop: "{{ fichiers_python.files }}"
+      ignore_errors: yes
+
+    - name: "5. Chercher tous les docker-compose.yml"
+      find:
+        paths: /opt
+        patterns: "docker-compose.yml"
+        recurse: yes
+        depth: 2
+      register: compose_files
+
+    - name: "6. Restart tous les conteneurs"
+      command: docker compose -f {{ item.path }} restart
+      loop: "{{ compose_files.files }}"
+      ignore_errors: yes
+
+    - name: "7. Résumé"
+      debug:
+        msg: |
+          IP PostgreSQL : {{ pg_ip.stdout }}
+          Fichiers Python corrigés : {{ fichiers_python.files | length }}
+          Projets redémarrés : {{ compose_files.files | length }}

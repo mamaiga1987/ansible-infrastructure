@@ -1,0 +1,52 @@
+---
+- name: Monitoring Infrastructure — TOUS les projets
+  hosts: local
+  roles:
+    - role: mon_projet
+      vars:
+        rapport_dossier: "/opt/ansible/rapports"
+        services_a_verifier:
+          - nom: ged-v2-frontend
+            port: 80
+            critique: true
+          - nom: ged-v2-backend
+            port: 8767
+            critique: true
+          - nom: chatbot-v2-backend
+            port: 8766
+            critique: false
+
+  tasks:
+    - name: "Scanner automatiquement tous les dossiers /opt/"
+      find:
+        paths: /opt
+        file_type: directory
+        depth: 1
+      register: tous_dossiers
+
+    - name: "Vérifier existence de chaque projet"
+      stat:
+        path: "{{ item.path }}"
+      register: projets_stat
+      loop: "{{ tous_dossiers.files }}"
+
+    - name: "Rapport projets détectés"
+      debug:
+        msg: |
+          ══════════════════════════════════
+          PROJETS DANS /opt/
+          ══════════════════════════════════
+          {% for item in projets_stat.results %}
+          {{ '✅' if item.stat.exists else '❌' }} {{ item.item.path | basename }}
+          {% endfor %}
+
+    - name: "Compter les conteneurs Docker actifs"
+      command: docker ps -q
+      register: conteneurs
+
+    - name: "Statut infrastructure"
+      debug:
+        msg: |
+          Conteneurs actifs : {{ conteneurs.stdout_lines | length }}
+          Projets dans /opt : {{ tous_dossiers.files | length }}
+          Date              : {{ ansible_date_time.date }} {{ ansible_date_time.time }}

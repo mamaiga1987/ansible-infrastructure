@@ -1,0 +1,7 @@
+# Variables groupe staging
+env: staging
+debug: true
+log_level: DEBUG
+replicas: 1
+backup_enabled: false
+monitoring_enabled: true

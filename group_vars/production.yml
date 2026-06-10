@@ -1,0 +1,8 @@
+# Variables groupe production
+env: production
+debug: false
+log_level: WARNING
+replicas: 3
+backup_enabled: true
+monitoring_enabled: true
+alert_email: mmohamedassalia6@gmail.com

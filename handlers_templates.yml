@@ -1,0 +1,112 @@
+---
+- name: MODULE 4 - Handlers et Templates Jinja2
+  hosts: local
+  vars:
+    nom_projet: "GED-v2"
+    version: "1.0"
+    auteur: "Mohamed Assalia Maiga"
+    services:
+      - nom: ged-v2-backend
+        port: 8767
+        framework: Flask Python
+      - nom: ged-v2-frontend
+        port: 80
+        framework: nginx
+      - nom: chatbot-v2-backend
+        port: 8766
+        framework: Flask Python
+
+  handlers:
+    - name: afficher confirmation
+      debug:
+        msg: "✅ Fichier de configuration généré avec succès !"
+
+  tasks:
+    - name: Créer le dossier des configs générées
+      file:
+        path: /opt/ansible/configs
+        state: directory
+        mode: '0755'
+
+    - name: Générer le rapport HTML du projet
+      copy:
+        content: |
+          <!DOCTYPE html>
+          <html>
+          <head><title>{{ nom_projet }} - Rapport</title></head>
+          <body style="font-family:Arial;background:#0f172a;color:#e2e8f0;padding:20px">
+            <h1 style="color:#a78bfa">📂 {{ nom_projet }} v{{ version }}</h1>
+            <p>Auteur : <strong>{{ auteur }}</strong></p>
+            <p>Date   : <strong>{{ ansible_date_time.date }}</strong></p>
+            <h2 style="color:#60a5fa">Services</h2>
+            <table border="1" style="border-collapse:collapse;width:100%">
+              <tr style="background:#1e293b">
+                <th>Service</th><th>Port</th><th>Framework</th>
+              </tr>
+              {% for service in services %}
+              <tr>
+                <td>{{ service.nom }}</td>
+                <td>{{ service.port }}</td>
+                <td>{{ service.framework }}</td>
+              </tr>
+              {% endfor %}
+            </table>
+            <h2 style="color:#60a5fa">Infos Serveur</h2>
+            <ul>
+              <li>OS : {{ ansible_distribution }} {{ ansible_distribution_version }}</li>
+              <li>RAM : {{ ansible_memtotal_mb }} MB</li>
+              <li>CPUs : {{ ansible_processor_vcpus }}</li>
+              <li>IP : {{ ansible_default_ipv4.address }}</li>
+            </ul>
+          </body>
+          </html>
+        dest: /opt/ansible/configs/rapport.html
+      notify: afficher confirmation
+
+    - name: Générer le fichier de config JSON
+      copy:
+        content: |
+          {
+            "projet": "{{ nom_projet }}",
+            "version": "{{ version }}",
+            "auteur": "{{ auteur }}",
+            "date": "{{ ansible_date_time.date }}",
+            "serveur": {
+              "os": "{{ ansible_distribution }} {{ ansible_distribution_version }}",
+              "ip": "{{ ansible_default_ipv4.address }}",
+              "ram_mb": {{ ansible_memtotal_mb }},
+              "cpus": {{ ansible_processor_vcpus }}
+            },
+            "services": [
+              {% for service in services %}
+              {
+                "nom": "{{ service.nom }}",
+                "port": {{ service.port }},
+                "framework": "{{ service.framework }}"
+              }{% if not loop.last %},{% endif %}
+              {% endfor %}
+            ]
+          }
+        dest: /opt/ansible/configs/config.json
+
+    - name: Générer le fichier .env de déploiement
+      copy:
+        content: |
+          # Généré automatiquement par Ansible
+          # {{ ansible_date_time.date }} {{ ansible_date_time.time }}
+          PROJET={{ nom_projet }}
+          VERSION={{ version }}
+          SERVEUR_IP={{ ansible_default_ipv4.address }}
+          OS={{ ansible_distribution }}_{{ ansible_distribution_version }}
+          {% for service in services %}
+          PORT_{{ service.nom | upper | replace('-','_') }}={{ service.port }}
+          {% endfor %}
+        dest: /opt/ansible/configs/deploy.env
+
+    - name: Lire le JSON généré
+      command: cat /opt/ansible/configs/config.json
+      register: json_content
+
+    - name: Afficher le JSON
+      debug:
+        msg: "{{ json_content.stdout }}"

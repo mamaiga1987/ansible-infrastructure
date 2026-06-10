@@ -1,0 +1,108 @@
+---
+- name: BLOC 2 - Provisionner un serveur from scratch
+  hosts: local
+  vars:
+    packages_essentiels:
+      - curl
+      - wget
+      - git
+      - vim
+      - htop
+      - unzip
+      - python3-pip
+      - ca-certificates
+      - gnupg
+      - lsb-release
+      - ufw
+    utilisateur_deploy: "debian"
+    ports_autorises:
+      - { port: 22,  proto: tcp, desc: "SSH" }
+      - { port: 80,  proto: tcp, desc: "HTTP" }
+      - { port: 443, proto: tcp, desc: "HTTPS" }
+      - { port: 5432, proto: tcp, desc: "PostgreSQL", source: "127.0.0.1" }
+
+  tasks:
+    - name: "1. Mettre à jour la liste des paquets"
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      become: yes
+
+    - name: "2. Installer les paquets essentiels"
+      apt:
+        name: "{{ packages_essentiels }}"
+        state: present
+      become: yes
+
+    - name: "3. Vérifier si Docker est installé"
+      command: docker --version
+      register: docker_check
+      ignore_errors: yes
+
+    - name: "4. Afficher statut Docker"
+      debug:
+        msg: "{{ '✅ Docker installé : ' + docker_check.stdout if not docker_check.failed else '⚠️ Docker non installé' }}"
+
+    - name: "5. Créer les dossiers de travail"
+      file:
+        path: "{{ item }}"
+        state: directory
+        owner: "{{ utilisateur_deploy }}"
+        mode: '0755'
+      become: yes
+      loop:
+        - /opt/projets
+        - /opt/backups
+        - /opt/logs
+        - /opt/configs
+        - /var/log/ansible
+
+    - name: "6. Configurer le fuseau horaire"
+      timezone:
+        name: Europe/Paris
+      become: yes
+
+    - name: "7. Vérifier le fuseau horaire"
+      command: timedatectl
+      register: timezone_info
+
+    - name: "8. Afficher infos timezone"
+      debug:
+        msg: "{{ timezone_info.stdout_lines[0] }}"
+
+    - name: "9. Créer le fichier de profil serveur"
+      copy:
+        content: |
+          ══════════════════════════════════════
+          PROFIL SERVEUR — {{ ansible_hostname }}
+          ══════════════════════════════════════
+          Date provision : {{ ansible_date_time.date }}
+          OS             : {{ ansible_distribution }} {{ ansible_distribution_version }}
+          Kernel         : {{ ansible_kernel }}
+          Architecture   : {{ ansible_architecture }}
+          RAM            : {{ ansible_memtotal_mb }} MB
+          CPUs           : {{ ansible_processor_vcpus }}
+          IP publique    : {{ ansible_default_ipv4.address }}
+          Timezone       : Europe/Paris
+          ── Paquets installés ──────────────────
+          {% for pkg in packages_essentiels %}
+          ✅ {{ pkg }}
+          {% endfor %}
+          ── Dossiers créés ─────────────────────
+          ✅ /opt/projets
+          ✅ /opt/backups
+          ✅ /opt/logs
+          ✅ /opt/configs
+          ══════════════════════════════════════
+        dest: /opt/ansible/configs/profil_serveur.txt
+        mode: '0644'
+
+    - name: "10. Afficher résumé"
+      debug:
+        msg: |
+          ✅ Serveur provisionné avec succès !
+          OS      : {{ ansible_distribution }} {{ ansible_distribution_version }}
+          RAM     : {{ ansible_memtotal_mb }} MB
+          CPUs    : {{ ansible_processor_vcpus }}
+          IP      : {{ ansible_default_ipv4.address }}
+          Timezone: Europe/Paris

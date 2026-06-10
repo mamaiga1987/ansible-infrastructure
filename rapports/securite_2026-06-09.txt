@@ -1,0 +1,64 @@
+══════════════════════════════════════
+RAPPORT SÉCURITÉ — 2026-06-09
+══════════════════════════════════════
+Serveur  : vps-659fea22
+IP       : 51.77.192.239
+OS       : Debian 12.14
+Date     : 2026-06-09 23:30:36
+
+── Connexions SSH ─────────────────────
+debian   pts/0        2026-06-09 23:24 (88.189.56.198)
+debian   pts/1        2026-06-09 23:30 (88.189.56.198)
+
+── Tentatives échouées ────────────────
+0 tentatives détectées
+
+── Root Login ─────────────────────────
+Désactivé ✅
+
+── Utilisateurs sudo ──────────────────
+debian
+
+── Mises à jour sécurité ──────────────
+0
+0 mises à jour disponibles
+
+── Fichiers SUID ──────────────────────
+/usr/bin/gpasswd
+/usr/bin/sudo
+/usr/bin/chsh
+/usr/bin/umount
+/usr/bin/chfn
+/usr/bin/newgrp
+/usr/bin/mount
+/usr/bin/su
+/usr/bin/passwd
+
+── Ports ouverts ──────────────────────
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                                   
+LISTEN 0      4096         0.0.0.0:4000      0.0.0.0:*    users:(("docker-proxy",pid=2263,fd=8))   
+LISTEN 0      4096         0.0.0.0:4001      0.0.0.0:*    users:(("docker-proxy",pid=120767,fd=8)) 
+LISTEN 0      4096         0.0.0.0:8088      0.0.0.0:*    users:(("docker-proxy",pid=190009,fd=8)) 
+LISTEN 0      4096         0.0.0.0:8090      0.0.0.0:*    users:(("docker-proxy",pid=2750,fd=8))   
+LISTEN 0      4096         0.0.0.0:8081      0.0.0.0:*    users:(("docker-proxy",pid=189985,fd=8)) 
+LISTEN 0      4096      127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=428,fd=21))
+LISTEN 0      4096         0.0.0.0:3001      0.0.0.0:*    users:(("docker-proxy",pid=2188,fd=8))   
+LISTEN 0      4096   127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=428,fd=19))
+LISTEN 0      4096         0.0.0.0:5355      0.0.0.0:*    users:(("systemd-resolve",pid=428,fd=12))
+LISTEN 0      4096         0.0.0.0:5432      0.0.0.0:*    users:(("docker-proxy",pid=2723,fd=8))   
+LISTEN 0      4096       127.0.0.1:6379      0.0.0.0:*    users:(("docker-proxy",pid=2138,fd=8))   
+LISTEN 0      4096         0.0.0.0:80        0.0.0.0:*    users:(("docker-proxy",pid=120726,fd=8)) 
+LISTEN 0      128          0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=481,fd=3))            
+LISTEN 0      4096         0.0.0.0:443       0.0.0.0:*    users:(("docker-proxy",pid=120746,fd=8)) 
+LISTEN 0      4096            [::]:4000         [::]:*    users:(("docker-proxy",pid=2270,fd=8))   
+LISTEN 0      4096            [::]:4001         [::]:*    users:(("docker-proxy",pid=120774,fd=8)) 
+LISTEN 0      4096            [::]:8088         [::]:*    users:(("docker-proxy",pid=190015,fd=8)) 
+LISTEN 0      4096            [::]:8090         [::]:*    users:(("docker-proxy",pid=2757,fd=8))   
+LISTEN 0      4096            [::]:8081         [::]:*    users:(("docker-proxy",pid=189991,fd=8)) 
+LISTEN 0      4096            [::]:3001         [::]:*    users:(("docker-proxy",pid=2210,fd=8))   
+LISTEN 0      4096            [::]:5355         [::]:*    users:(("systemd-resolve",pid=428,fd=14))
+LISTEN 0      4096            [::]:5432         [::]:*    users:(("docker-proxy",pid=2729,fd=8))   
+LISTEN 0      4096            [::]:80           [::]:*    users:(("docker-proxy",pid=120733,fd=8)) 
+LISTEN 0      128             [::]:22           [::]:*    users:(("sshd",pid=481,fd=4))            
+LISTEN 0      4096            [::]:443          [::]:*    users:(("docker-proxy",pid=120753,fd=8)) 
+══════════════════════════════════════

@@ -1,0 +1,142 @@
+---
+- name: BLOC 5 - Simulation multi-serveurs
+  hosts: local
+  vars:
+    environnements:
+      - nom: "production"
+        ip: "51.77.192.239"
+        projets:
+          - ged-v2
+          - chatbot-v2
+          - bi-stack
+      - nom: "staging"
+        ip: "51.77.192.239"
+        projets:
+          - ged-v2
+      - nom: "dev"
+        ip: "51.77.192.239"
+        projets:
+          - ged-v2
+
+  tasks:
+    - name: "1. Simuler inventaire multi-environnements"
+      debug:
+        msg: |
+          ══════════════════════════════════
+          INVENTAIRE MULTI-SERVEURS
+          ══════════════════════════════════
+          {% for env in environnements %}
+          Environnement : {{ env.nom | upper }}
+          IP            : {{ env.ip }}
+          Projets       : {{ env.projets | join(', ') }}
+          ──────────────────────────────────
+          {% endfor %}
+
+    - name: "2. Vérifier conteneurs par environnement"
+      command: docker ps --format "{% raw %}{{.Names}}{% endraw %}" 
+      register: conteneurs
+
+    - name: "3. Analyser projets actifs"
+      set_fact:
+        projets_actifs: "{{ conteneurs.stdout_lines }}"
+
+    - name: "4. Rapport par environnement"
+      debug:
+        msg: |
+          Environnement {{ item.nom | upper }} :
+          {% for projet in item.projets %}
+          {{ '✅' if projet in conteneurs.stdout else '❌' }} {{ projet }}
+          {% endfor %}
+      loop: "{{ environnements }}"
+
+    - name: "5. Générer inventaire dynamique"
+      copy:
+        content: |
+          # Inventaire généré automatiquement par Ansible
+          # Date : {{ ansible_date_time.date }}
+
+          [production]
+          prod-server ansible_host=51.77.192.239 ansible_user=debian
+
+          [staging]
+          staging-server ansible_host=51.77.192.239 ansible_user=debian
+
+          [dev]
+          dev-server ansible_host=localhost ansible_connection=local
+
+          [all:vars]
+          ansible_ssh_private_key_file=~/.ssh/id_rsa
+          ansible_python_interpreter=/usr/bin/python3
+
+          [production:vars]
+          env=production
+          debug=false
+
+          [staging:vars]
+          env=staging
+          debug=true
+
+          [dev:vars]
+          env=development
+          debug=true
+        dest: /opt/ansible/inventory_complet.ini
+
+    - name: "6. Simuler rolling update"
+      debug:
+        msg: |
+          ══════════════════════════════════
+          ROLLING UPDATE SIMULATION
+          ══════════════════════════════════
+          Stratégie : 1 serveur à la fois
+          Étape 1   : Retirer prod-1 du load balancer
+          Étape 2   : Mettre à jour prod-1
+          Étape 3   : Vérifier santé prod-1
+          Étape 4   : Remettre prod-1 dans le load balancer
+          Étape 5   : Répéter pour prod-2, prod-3...
+          Résultat  : ✅ Zéro interruption de service
+
+    - name: "7. Créer groupe_vars pour production"
+      file:
+        path: /opt/ansible/group_vars
+        state: directory
+        mode: '0755'
+
+    - name: "8. Variables spécifiques production"
+      copy:
+        content: |
+          # Variables groupe production
+          env: production
+          debug: false
+          log_level: WARNING
+          replicas: 3
+          backup_enabled: true
+          monitoring_enabled: true
+          alert_email: mmohamedassalia6@gmail.com
+        dest: /opt/ansible/group_vars/production.yml
+
+    - name: "9. Variables spécifiques staging"
+      copy:
+        content: |
+          # Variables groupe staging
+          env: staging
+          debug: true
+          log_level: DEBUG
+          replicas: 1
+          backup_enabled: false
+          monitoring_enabled: true
+        dest: /opt/ansible/group_vars/staging.yml
+
+    - name: "10. Résumé multi-serveurs"
+      debug:
+        msg: |
+          ══════════════════════════════════════
+          ✅ CONFIGURATION MULTI-SERVEURS
+          ══════════════════════════════════════
+          Inventaire complet : /opt/ansible/inventory_complet.ini
+          Group vars prod    : /opt/ansible/group_vars/production.yml
+          Group vars staging : /opt/ansible/group_vars/staging.yml
+
+          💡 En production réelle :
+          ansible-playbook -i inventory_complet.ini deploy.yml --limit production
+          ansible-playbook -i inventory_complet.ini deploy.yml --limit staging
+          ansible-playbook -i inventory_complet.ini deploy.yml --limit dev

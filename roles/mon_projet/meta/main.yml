@@ -1,0 +1,27 @@
+# Rôle : mohamed.ged_deploy
+# Auteur : Mohamed Assalia Maiga
+# Description : Déploiement automatique GED-v2
+# Galaxy : ansible-galaxy install mohamed.ged_deploy
+
+galaxy_info:
+  author: Mohamed Assalia Maiga
+  description: Deploy GED-v2 RAG platform with 5 AI frameworks
+  company: Freelance
+  license: MIT
+  min_ansible_version: "2.14"
+  platforms:
+    - name: Debian
+      versions:
+        - "12"
+    - name: Ubuntu
+      versions:
+        - "22.04"
+        - "24.04"
+  galaxy_tags:
+    - docker
+    - rag
+    - ai
+    - llm
+    - python
+    - flask
+    - postgresql

@@ -1,0 +1,35 @@
+---
+- name: MODULE 6 - Ansible Vault
+  hosts: local
+  vars_files:
+    - /opt/ansible/secrets.yml
+
+  tasks:
+    - name: Afficher les secrets déchiffrés
+      debug:
+        msg: |
+          DB User    : {{ db_user }}
+          DB Password: {{ db_password }}
+          OpenAI Key : {{ openai_api_key[:10] }}... (masqué)
+          Mistral Key: {{ mistral_api_key[:10] }}... (masqué)
+
+    - name: Tester connexion PostgreSQL avec les secrets
+      command: >
+        docker exec debian-postgres-1
+        psql -U {{ db_user }} -d n8n -c "SELECT COUNT(*) FROM documents_rag;"
+      register: db_result
+
+    - name: Afficher résultat base de données
+      debug:
+        msg: "✅ PostgreSQL connecté — {{ db_result.stdout_lines[-2] | trim }} chunks dans documents_rag"
+
+    - name: Sauvegarder un fichier config sécurisé
+      copy:
+        content: |
+          # Config générée par Ansible Vault
+          # Ne jamais committer ce fichier !
+          DB_HOST=172.19.0.19
+          DB_USER={{ db_user }}
+          DB_PASS={{ db_password }}
+        dest: /opt/ansible/configs/secure.env
+        mode: '0600'

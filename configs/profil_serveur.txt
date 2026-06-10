@@ -1,0 +1,29 @@
+══════════════════════════════════════
+PROFIL SERVEUR — vps-659fea22
+══════════════════════════════════════
+Date provision : 2026-06-09
+OS             : Debian 12.14
+Kernel         : 6.1.0-39-cloud-amd64
+Architecture   : x86_64
+RAM            : 7763 MB
+CPUs           : 4
+IP publique    : 51.77.192.239
+Timezone       : Europe/Paris
+── Paquets installés ──────────────────
+✅ curl
+✅ wget
+✅ git
+✅ vim
+✅ htop
+✅ unzip
+✅ python3-pip
+✅ ca-certificates
+✅ gnupg
+✅ lsb-release
+✅ ufw
+── Dossiers créés ─────────────────────
+✅ /opt/projets
+✅ /opt/backups
+✅ /opt/logs
+✅ /opt/configs
+══════════════════════════════════════

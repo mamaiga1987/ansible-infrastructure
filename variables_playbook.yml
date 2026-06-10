@@ -1,0 +1,47 @@
+---
+- name: MODULE 2 - Variables et Facts
+  hosts: local
+  vars:
+    nom_projet: "GED-v2"
+    version: "1.0"
+    port_backend: 8767
+    port_frontend: 80
+    dossier_base: "/opt/ged-v2"
+    auteur: "Mohamed Assalia Maiga"
+
+  tasks:
+    - name: Afficher les variables du projet
+      debug:
+        msg: |
+          Projet    : {{ nom_projet }} v{{ version }}
+          Auteur    : {{ auteur }}
+          Backend   : port {{ port_backend }}
+          Frontend  : port {{ port_frontend }}
+          Dossier   : {{ dossier_base }}
+
+    - name: Utiliser une variable dans un chemin
+      file:
+        path: "{{ dossier_base }}/ansible_info"
+        state: directory
+        mode: '0755'
+
+    - name: Créer un fichier avec variables
+      copy:
+        content: |
+          Projet  : {{ nom_projet }}
+          Version : {{ version }}
+          Auteur  : {{ auteur }}
+          Date    : {{ ansible_date_time.date }}
+          Heure   : {{ ansible_date_time.time }}
+        dest: "{{ dossier_base }}/ansible_info/info.txt"
+
+    - name: Afficher les Facts système automatiques
+      debug:
+        msg: |
+          OS          : {{ ansible_distribution }} {{ ansible_distribution_version }}
+          Kernel      : {{ ansible_kernel }}
+          Architecture: {{ ansible_architecture }}
+          RAM totale  : {{ ansible_memtotal_mb }} MB
+          CPUs        : {{ ansible_processor_vcpus }}
+          IP          : {{ ansible_default_ipv4.address }}
+          Hostname    : {{ ansible_hostname }}

@@ -1,0 +1,78 @@
+---
+- name: Créer le dossier des rapports
+  file:
+    path: "{{ rapport_dossier }}"
+    state: directory
+    mode: '0755'
+
+- name: Collecter infos disque
+  command: df -h /
+  register: disk_info
+
+- name: Collecter infos mémoire
+  command: free -m
+  register: mem_info
+
+- name: Collecter conteneurs Docker actifs
+  command: docker ps --format 'table {% raw %}{{.Names}}\t{{.Status}}\t{{.Ports}}{% endraw %}'
+  register: docker_info
+
+- name: Vérifier existence des dossiers projets
+  stat:
+    path: "{{ item }}"
+  register: dossiers_stat
+  loop: "{{ dossiers_a_verifier }}"
+
+- name: Vérifier les ports des services
+  wait_for:
+    host: localhost
+    port: "{{ item.port }}"
+    timeout: 3
+  register: ports_stat
+  ignore_errors: yes
+  loop: "{{ services_a_verifier }}"
+
+- name: Générer le rapport de monitoring
+  copy:
+    content: |
+      ═══════════════════════════════════════════════
+      RAPPORT MONITORING — {{ projet_nom }} v{{ projet_version }}
+      ═══════════════════════════════════════════════
+      Auteur  : {{ projet_auteur }}
+      Date    : {{ ansible_date_time.date }}
+      Heure   : {{ ansible_date_time.time }}
+      Serveur : {{ ansible_hostname }} ({{ ansible_default_ipv4.address }})
+      OS      : {{ ansible_distribution }} {{ ansible_distribution_version }}
+      RAM     : {{ ansible_memtotal_mb }} MB total
+      CPUs    : {{ ansible_processor_vcpus }}
+
+      ── DISQUE ──────────────────────────────────────
+      {{ disk_info.stdout }}
+
+      ── MÉMOIRE ─────────────────────────────────────
+      {{ mem_info.stdout }}
+
+      ── CONTENEURS DOCKER ───────────────────────────
+      {{ docker_info.stdout }}
+
+      ── DOSSIERS PROJETS ────────────────────────────
+      {% for item in dossiers_stat.results %}
+      {{ '✅' if item.stat.exists else '❌' }} {{ item.item }}
+      {% endfor %}
+
+      ── SERVICES & PORTS ────────────────────────────
+      {% for item in ports_stat.results %}
+      {{ '✅' if not item.failed else '❌' }} {{ item.item.nom }} (port {{ item.item.port }}) {{ '— CRITIQUE' if item.item.critique else '' }}
+      {% endfor %}
+
+      ═══════════════════════════════════════════════
+    dest: "{{ rapport_dossier }}/monitoring_{{ ansible_date_time.date }}.txt"
+  notify: afficher rapport généré
+
+- name: Afficher résumé dans la console
+  debug:
+    msg: |
+      ── Résumé Monitoring ──
+      {% for item in ports_stat.results %}
+      {{ '✅' if not item.failed else '❌' }} {{ item.item.nom }}
+      {% endfor %}

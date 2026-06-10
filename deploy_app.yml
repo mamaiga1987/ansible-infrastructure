@@ -1,0 +1,64 @@
+---
+- name: Déploiement automatique — TOUS les projets
+  hosts: local
+  become: no
+
+  tasks:
+    - name: "1. Scanner tous les projets dans /opt/"
+      find:
+        paths: /opt
+        file_type: directory
+        depth: 1
+      register: tous_dossiers
+
+    - name: "2. Filtrer les dossiers avec git (projets GitHub)"
+      stat:
+        path: "{{ item.path }}/.git"
+      register: git_check
+      loop: "{{ tous_dossiers.files }}"
+
+    - name: "3. Construire la liste des projets git"
+      set_fact:
+        projets_git: "{{ projets_git | default([]) + [item.item.path] }}"
+      loop: "{{ git_check.results }}"
+      when: item.stat.exists
+
+    - name: "4. Afficher les projets détectés"
+      debug:
+        msg: |
+          ══════════════════════════════════
+          PROJETS GIT DÉTECTÉS DANS /opt/
+          ══════════════════════════════════
+          {% for p in projets_git | default([]) %}
+          ✅ {{ p }}
+          {% endfor %}
+
+    - name: "5. Sauvegarder version actuelle"
+      command: git -C {{ item }} rev-parse --short HEAD
+      register: versions_avant
+      loop: "{{ projets_git | default([]) }}"
+      ignore_errors: yes
+
+    - name: "6. Git pull sur chaque projet"
+      command: git -C {{ item }} pull origin main
+      register: git_results
+      loop: "{{ projets_git | default([]) }}"
+      ignore_errors: yes
+
+    - name: "7. Résultat par projet"
+      debug:
+        msg: "{{ item.item | basename }} → {{ item.stdout | default('Erreur ou pas de remote') }}"
+      loop: "{{ git_results.results }}"
+
+    - name: "8. Logger le déploiement"
+      lineinfile:
+        path: /opt/ansible/configs/deploy_history.log
+        line: "{{ ansible_date_time.date }} {{ ansible_date_time.time }} | {{ projets_git | default([]) | length }} projets mis à jour"
+        create: yes
+
+    - name: "9. Résumé final"
+      debug:
+        msg: |
+          ✅ DÉPLOIEMENT TERMINÉ
+          {{ projets_git | default([]) | length }} projets git détectés et mis à jour
+          Log : /opt/ansible/configs/deploy_history.log

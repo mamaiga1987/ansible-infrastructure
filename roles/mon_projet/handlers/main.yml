@@ -1,0 +1,4 @@
+---
+- name: afficher rapport généré
+  debug:
+    msg: "📊 Rapport sauvegardé dans {{ rapport_dossier }}/monitoring_{{ ansible_date_time.date }}.txt"

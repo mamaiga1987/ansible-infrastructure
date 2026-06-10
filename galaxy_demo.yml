@@ -1,0 +1,98 @@
+---
+- name: BLOC 6 - Ansible Galaxy et rôles communautaires
+  hosts: local
+  tasks:
+    - name: "1. Afficher les rôles disponibles localement"
+      command: ansible-galaxy role list --roles-path /opt/ansible/roles
+      register: galaxy_list
+
+    - name: "2. Afficher liste rôles"
+      debug:
+        msg: "{{ galaxy_list.stdout_lines }}"
+
+    - name: "3. Créer requirements.yml"
+      copy:
+        content: |
+          ---
+          # Fichier requirements.yml
+          # Liste des rôles Galaxy à installer
+          roles:
+            - name: geerlingguy.docker
+              version: "7.4.4"
+            - name: geerlingguy.git
+              version: "3.0.0"
+            - name: geerlingguy.pip
+              version: "2.2.0"
+
+          collections:
+            - name: community.docker
+              version: ">=3.0.0"
+            - name: community.postgresql
+              version: ">=3.0.0"
+            - name: ansible.posix
+              version: ">=1.5.0"
+        dest: /opt/ansible/requirements.yml
+
+    - name: "4. Installer les collections Galaxy"
+      command: ansible-galaxy collection install community.docker community.postgresql ansible.posix
+      register: galaxy_install
+
+    - name: "5. Afficher résultat installation"
+      debug:
+        msg: "{{ galaxy_install.stdout_lines[-3:] }}"
+
+    - name: "6. Vérifier collections installées"
+      command: ansible-galaxy collection list
+      register: collections_list
+
+    - name: "7. Afficher collections"
+      debug:
+        msg: "{{ collections_list.stdout_lines[:10] }}"
+
+    - name: "8. Créer votre propre rôle publiable"
+      copy:
+        content: |
+          # Rôle : mohamed.ged_deploy
+          # Auteur : Mohamed Assalia Maiga
+          # Description : Déploiement automatique GED-v2
+          # Galaxy : ansible-galaxy install mohamed.ged_deploy
+
+          galaxy_info:
+            author: Mohamed Assalia Maiga
+            description: Deploy GED-v2 RAG platform with 5 AI frameworks
+            company: Freelance
+            license: MIT
+            min_ansible_version: "2.14"
+            platforms:
+              - name: Debian
+                versions:
+                  - "12"
+              - name: Ubuntu
+                versions:
+                  - "22.04"
+                  - "24.04"
+            galaxy_tags:
+              - docker
+              - rag
+              - ai
+              - llm
+              - python
+              - flask
+              - postgresql
+        dest: /opt/ansible/roles/mon_projet/meta/main.yml
+
+    - name: "9. Résumé Galaxy"
+      debug:
+        msg: |
+          ══════════════════════════════════════
+          ✅ ANSIBLE GALAXY CONFIGURÉ
+          ══════════════════════════════════════
+          requirements.yml  : /opt/ansible/requirements.yml
+          Collections       : community.docker, community.postgresql, ansible.posix
+          Votre rôle        : mohamed.ged_deploy
+
+          💡 Commandes utiles Galaxy :
+          ansible-galaxy install -r requirements.yml
+          ansible-galaxy role search docker
+          ansible-galaxy collection install community.docker
+          ansible-galaxy role init mon_nouveau_role

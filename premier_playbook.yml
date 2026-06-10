@@ -1,0 +1,31 @@
+---
+- name: Mon premier playbook Ansible
+  hosts: local
+  tasks:
+
+    - name: Vérifier que Python est installé
+      command: python3 --version
+      register: python_version
+
+    - name: Afficher la version Python
+      debug:
+        msg: "Python installé : {{ python_version.stdout }}"
+
+    - name: Créer un dossier de test
+      file:
+        path: /tmp/ansible_test
+        state: directory
+        mode: '0755'
+
+    - name: Créer un fichier de test
+      copy:
+        content: "Créé par Ansible le {{ ansible_date_time.date }}"
+        dest: /tmp/ansible_test/hello.txt
+
+    - name: Lire le fichier créé
+      command: cat /tmp/ansible_test/hello.txt
+      register: contenu
+
+    - name: Afficher le contenu
+      debug:
+        msg: "{{ contenu.stdout }}"

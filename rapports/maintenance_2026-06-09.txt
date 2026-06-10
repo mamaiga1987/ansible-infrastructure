@@ -1,0 +1,163 @@
+══════════════════════════════════════
+RAPPORT MAINTENANCE — 2026-06-09
+══════════════════════════════════════
+Serveur    : vps-659fea22
+Date       : 2026-06-09 21:10:52
+
+── Santé Système ──────────────────────
+Disque     : 96% utilisé ⚠️ ALERTE
+Reboot     : ⚠️ REQUIS
+
+── Nettoyage Docker ───────────────────
+Images     : Deleted Images:
+deleted: sha256:0cb12f381e6130525acbf959fd0c04257781b4044f602e4c6f117758a9373186
+deleted: sha256:df047936d3ba1ed5969f5452ea71f3db01cfc65211b3181fee903c9ae5cf7f4b
+deleted: sha256:a1bc9b2242c31eaa162262077ca5f6282183be251331f6c530391f9ef0c82121
+deleted: sha256:37b8c56c1df06d5f0899b6ad688cfd610cf19f9ae105060f13d89e13d6bfa563
+deleted: sha256:40e6b4c31dee17244992c26fec488bccb58bc72afc7af1a07c5c76053595d79a
+deleted: sha256:9c91e78444229b79721363b2fc375194f2ace8690e8e04249630932f211b1b8d
+deleted: sha256:79b9751872e29d9cf38e4ba6833b59be24d02f7c5d266bf08d646df047e4dc1f
+deleted: sha256:a95de2402926a559e1e1d21e7b893b00c97f03318a569e75f533af078e943c72
+deleted: sha256:18cb7e516bcbddfd587916cfab2a323e0894c1c203b079f74ded9d8bc1aae901
+deleted: sha256:d5c6d9674c71c418c5704fe06716c2bfcbba9529cf1dbc4475dccd68212deae9
+deleted: sha256:eeefcf517300711e507fd2887762cd3bb2a6c19a3c75e2257d5352629b496191
+deleted: sha256:52c1c2686348868f23b97c64b76d7df8037418b45a6844e25b69e8455340ff59
+deleted: sha256:42d21a7c30c7a109174b3f0b3ea08602d9a3d0550da4e852d09435b9f031ed60
+deleted: sha256:f93e9712c3fc79ce62482fdda900a7284ddc729a75c3fd0185acbb78a3ce2372
+deleted: sha256:6d6936d334020f7865f9c7eef053d11b78b76016163afdd83abfafdb53a86157
+deleted: sha256:6332f0d4b461b43dedc43cba759f67d6f00afa80ab0c82a44a9d4f8813ea26ee
+deleted: sha256:62b59d177ab7fc99018189d1e8e561d1c0833d0d91ca98f8aea7285238c006b8
+deleted: sha256:b807f4e7e96f8a7330c7b2757fbfdf698fa56b1ae928ecc357de7b72e4959047
+deleted: sha256:dd28234ae5ace92f66992faeb3575f240a9d1137ca1a87fd09294a71e27ab7ea
+deleted: sha256:bd1c750c36e918884b70be74def142f2aefca4d9e0cad6c489ae1789da53e5b5
+deleted: sha256:dc27036a4227edd26d497a2e881ed696bd57154d163aa6d3945483aa62477f65
+deleted: sha256:839df3a548c073e85fb004fd14d80a1cc83d0b7afbdc2dcb2eac3736f0ba490b
+deleted: sha256:2b9b36ba62a749623964834c4b246c740f2dc5f092e5dd230a6933448ef47b10
+deleted: sha256:adc29c7e193c7b8230c560bca657ef10ce3aa4a132f9941ea22b1721c400be4a
+deleted: sha256:0ebe8453ebf4fa85b041f9e106aca1ccf91eb8e03d601d49a81b079baababbd3
+deleted: sha256:431ae638eabe445aaa9fda3ecefc582dbf45eef1231798a45a6c67bfaf39c073
+deleted: sha256:27918d86052ca968f011a4a45b08bda677affc53b5eade199a3e8245b400863d
+deleted: sha256:17e7edb6919c7fc484496a1208b4205d89af3425604d78a402139bd5ffafbf53
+deleted: sha256:b3da0238ab42654f48c7b39256194714329e7676a379ee9f5fe90e82abb9bddc
+deleted: sha256:dce0417e2911778126d00f2a7e1e6c2b8dd568e04654b383d47ffc6710dd94be
+deleted: sha256:1107d7f3750a7fafa284531f4c8c9b8ec2f0abfc0e6806fca5d2317cf627658c
+deleted: sha256:3aac823084b4e4efd56c573fd33df2fb024db5602ba69c90754a3e6e60d7c966
+deleted: sha256:011338b0da3e768b323dea4d822720202818f09dd3f7cfb700124647bb7cb274
+deleted: sha256:d0f983f190424aa5c8d9788b18024b3d21a4750ea2f58c3f9d7f0c9eafee6ced
+deleted: sha256:c7854b17d92c830c2bb562029e3079f01b52cb264f8963fe09589bbc81d4e79a
+deleted: sha256:25b983b3f163a47af1eea24d707bb83ee8ad67849a58a8ee9f1510d918c959df
+deleted: sha256:5c89881f1e0a0e3d83c66d7f36e8e5cb03266c295b81acb71406b42fa79e93bb
+deleted: sha256:10c2fb975e79fb1899fe3b3d546a169471203a60d5eedcb68b0212802612d9f1
+deleted: sha256:f5fa3c9f08b9a239272fb613804bb76fe29a29c8d81400ac1e0ac00f7c8d10ce
+deleted: sha256:464f13c48f335045ee96f8fc15f5366673d2376d463ec8a865ef7ef1ca0dae0f
+deleted: sha256:f625f0509eefe6f0dbba2471efedfafb361dff9f9750ffec917cb764e64a8474
+deleted: sha256:07f221c5fa05164c1f320982888dd8d6f8c93b50d67e39a3984a935ace2fbdc1
+deleted: sha256:be3e52b9ac4f7cc040846dfc1889be97ed54f715b26e02cdec0c1f819620ab2c
+deleted: sha256:ace20b0026432c2f8b57edc82b511e9a2e20dff6cb33c8bee772d7c476944853
+deleted: sha256:4a23cdcb3a93d523938be6c1b1b674facd44f64c21e3d895c74bbec3cad4ea9d
+deleted: sha256:76ed6779a2c6f929c0413f51761913b72338ceb81deee554a9a62eefbe4bafb0
+deleted: sha256:cf05ef49ae8b593ebadb58cafad810482371fda44701303dded0c09a7e8dd887
+deleted: sha256:5b11f33536d92331aa702595138da31571ff676e5ea7272a7b9370d53de42ba3
+deleted: sha256:f251ef6bf9caf96bc39e957411fb611ebfad0c954d55197cc60484ffc2b1e8f2
+deleted: sha256:c49e2957b56fa3c1acd2945037e8b640223a4dbd9bc54ae29620309c12461a90
+deleted: sha256:6fbcbda55829a1f2dd366baedba7be1bbfc8f1b8b791ee49956dffba03316fad
+deleted: sha256:4c22a1464924aabbd1c91179e1c1edf9f5b1aba8613b05b334e846d8f86d5dc1
+deleted: sha256:09fccfe07624ac451149053999d8a99d7e46c3f523a8220d511440f1fe9ecd48
+deleted: sha256:1d58f8f759d308a4e4bd588da3f172bfb9c3a60cfb3b3b4ce9cdb7bb4f62a370
+deleted: sha256:848b3ec4911a754db949be39ac9794414afbd13aa07ca359a9e22af4cfcbfc17
+
+Total reclaimed space: 393.4MB
+Conteneurs : Deleted Containers:
+e71650fe2946efc27baedb6fbe084f927f14ccf81480ed21bbfe361d59d47598
+
+Total reclaimed space: 0B
+
+── Conteneurs actifs ──────────────────
+ged-v2-frontend — Up 4 minutes
+ged-v2-backend — Up 4 minutes
+chatbot-v2-backend — Up 4 days
+chatbot-v2-frontend — Up 4 days
+chunker-service — Restarting (2) 51 seconds ago
+frontend — Up 6 days
+superset-backend — Up 6 days
+doctracker-backend — Up 7 days
+doctracker-frontend — Up 9 days
+adminia-backend — Up 12 days
+adminia-frontend — Up 12 days
+adminia-landing — Up 12 days
+fete-voisins-backend — Up 2 weeks
+fete-voisins-frontend — Up 2 weeks
+fete-voisins-db — Up 2 weeks (healthy)
+superset — Up 3 weeks (healthy)
+superset-db — Up 3 weeks (healthy)
+tooltip-api — Up 3 weeks
+superset-cache — Up 3 weeks (healthy)
+chatbot-3f-yvelines — Up 6 days
+debian-traefik-1 — Up 2 weeks
+doctracker-saas-frontend — Up 4 weeks
+doctracker-saas-backend — Up 4 weeks
+doctracker-saas-db — Up 4 weeks (healthy)
+superset_app — Up 5 seconds (health: starting)
+superset_cache — Up 6 weeks
+debian-postgres-1 — Up 3 months (healthy)
+debian-n8n-1 — Up 3 months
+debian-mysql-1 — Up 3 months (healthy)
+
+── Mises à jour sécurité ──────────────
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages were automatically installed and are no longer required:
+  libltdl7 libslirp0 slirp4netns
+Use 'sudo apt autoremove' to remove them.
+The following NEW packages will be installed:
+  libnftables1 nftables
+The following packages will be upgraded:
+  containerd.io docker-buildx-plugin docker-ce docker-ce-cli
+  docker-ce-rootless-extras docker-compose-plugin
+6 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 99.1 MB of archives.
+After this operation, 62.7 MB disk space will be freed.
+Get:1 file:/etc/apt/mirrors/debian.list Mirrorlist [30 B]
+Get:2 https://deb.debian.org/debian bookworm/main amd64 libnftables1 amd64 1.0.6-2+deb12u2 [299 kB]
+Get:3 https://deb.debian.org/debian bookworm/main amd64 nftables amd64 1.0.6-2+deb12u2 [70.3 kB]
+Get:4 https://download.docker.com/linux/debian bookworm/stable amd64 docker-ce-cli amd64 5:29.5.3-1~debian.12~bookworm [16.8 MB]
+Get:5 https://download.docker.com/linux/debian bookworm/stable amd64 containerd.io amd64 2.2.4-1~debian.12~bookworm [23.6 MB]
+Get:6 https://download.docker.com/linux/debian bookworm/stable amd64 docker-ce amd64 5:29.5.3-1~debian.12~bookworm [22.9 MB]
+Get:7 https://download.docker.com/linux/debian bookworm/stable amd64 docker-buildx-plugin amd64 0.34.1-1~debian.12~bookworm [17.2 MB]
+Get:8 https://download.docker.com/linux/debian bookworm/stable amd64 docker-ce-rootless-extras amd64 5:29.5.3-1~debian.12~bookworm [10.2 MB]
+Get:9 https://download.docker.com/linux/debian bookworm/stable amd64 docker-compose-plugin amd64 5.1.4-1~debian.12~bookworm [8127 kB]
+apt-listchanges: Reading changelogs...
+Fetched 99.1 MB in 4s (22.2 MB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 95759 files and directories currently installed.)
+Preparing to unpack .../0-docker-ce-cli_5%3a29.5.3-1~debian.12~bookworm_amd64.deb ...
+Unpacking docker-ce-cli (5:29.5.3-1~debian.12~bookworm) over (5:28.0.4-1~debian.12~bookworm) ...
+Preparing to unpack .../1-containerd.io_2.2.4-1~debian.12~bookworm_amd64.deb ...
+Unpacking containerd.io (2.2.4-1~debian.12~bookworm) over (1.7.27-1) ...
+Selecting previously unselected package libnftables1:amd64.
+Preparing to unpack .../2-libnftables1_1.0.6-2+deb12u2_amd64.deb ...
+Unpacking libnftables1:amd64 (1.0.6-2+deb12u2) ...
+Selecting previously unselected package nftables.
+Preparing to unpack .../3-nftables_1.0.6-2+deb12u2_amd64.deb ...
+Unpacking nftables (1.0.6-2+deb12u2) ...
+Preparing to unpack .../4-docker-ce_5%3a29.5.3-1~debian.12~bookworm_amd64.deb ...
+Unpacking docker-ce (5:29.5.3-1~debian.12~bookworm) over (5:28.0.4-1~debian.12~bookworm) ...
+Preparing to unpack .../5-docker-buildx-plugin_0.34.1-1~debian.12~bookworm_amd64.deb ...
+Unpacking docker-buildx-plugin (0.34.1-1~debian.12~bookworm) over (0.22.0-1~debian.12~bookworm) ...
+Preparing to unpack .../6-docker-ce-rootless-extras_5%3a29.5.3-1~debian.12~bookworm_amd64.deb ...
+Unpacking docker-ce-rootless-extras (5:29.5.3-1~debian.12~bookworm) over (5:28.0.4-1~debian.12~bookworm) ...
+Preparing to unpack .../7-docker-compose-plugin_5.1.4-1~debian.12~bookworm_amd64.deb ...
+Unpacking docker-compose-plugin (5.1.4-1~debian.12~bookworm) over (2.34.0-1~debian.12~bookworm) ...
+Setting up libnftables1:amd64 (1.0.6-2+deb12u2) ...
+Setting up nftables (1.0.6-2+deb12u2) ...
+Setting up docker-buildx-plugin (0.34.1-1~debian.12~bookworm) ...
+Setting up containerd.io (2.2.4-1~debian.12~bookworm) ...
+Setting up docker-compose-plugin (5.1.4-1~debian.12~bookworm) ...
+Setting up docker-ce-cli (5:29.5.3-1~debian.12~bookworm) ...
+Setting up docker-ce-rootless-extras (5:29.5.3-1~debian.12~bookworm) ...
+Setting up docker-ce (5:29.5.3-1~debian.12~bookworm) ...
+Processing triggers for man-db (2.11.2-2) ...
+Processing triggers for libc-bin (2.36-9+deb12u14) ...
+
+══════════════════════════════════════

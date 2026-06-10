@@ -1,0 +1,23 @@
+---
+# Variables par défaut — modifiables depuis le playbook
+projet_nom: "GED-v2"
+projet_version: "1.0"
+projet_auteur: "Mohamed Assalia Maiga"
+rapport_dossier: "/opt/ansible/rapports"
+services_a_verifier:
+  - nom: ged-v2-frontend
+    port: 80
+    critique: true
+  - nom: ged-v2-backend
+    port: 8767
+    critique: true
+  - nom: chatbot-v2-backend
+    port: 8766
+    critique: false
+dossiers_a_verifier:
+  - /opt/ged-v2
+  - /opt/chatbot-v2
+  - /opt/rag-langchain
+  - /opt/rag-llamaindex
+  - /opt/agent-langgraph
+  - /opt/ged-llamaindex

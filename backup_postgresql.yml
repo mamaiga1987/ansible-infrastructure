@@ -1,0 +1,79 @@
+---
+- name: PROJET RÉEL - Backup PostgreSQL automatique
+  hosts: local
+  vars_files:
+    - /opt/ansible/secrets.yml
+  vars:
+    backup_dossier: "/opt/ansible/backups"
+    backup_date: "{{ ansible_date_time.date }}"
+    backup_heure: "{{ ansible_date_time.hour }}{{ ansible_date_time.minute }}"
+    bases_a_sauvegarder:
+      - n8n
+    retention_jours: 7
+
+  tasks:
+    - name: Créer dossier backup
+      file:
+        path: "{{ backup_dossier }}/{{ backup_date }}"
+        state: directory
+        mode: '0750'
+
+    - name: Backup de chaque base de données directement sur disque
+      shell: >
+        docker exec debian-postgres-1
+        pg_dump -U n8n {{ item }}
+        > {{ backup_dossier }}/{{ backup_date }}/{{ item }}_{{ backup_date }}_{{ backup_heure }}.sql
+      loop: "{{ bases_a_sauvegarder }}"
+
+    - name: Vérifier taille des backups
+      stat:
+        path: "{{ backup_dossier }}/{{ backup_date }}/{{ item }}_{{ backup_date }}_{{ backup_heure }}.sql"
+      register: backup_stat
+      loop: "{{ bases_a_sauvegarder }}"
+
+    - name: Afficher rapport backup
+      debug:
+        msg: |
+          ✅ Backup {{ item.item }} terminé
+          📁 {{ backup_dossier }}/{{ backup_date }}/{{ item.item }}_{{ backup_date }}_{{ backup_heure }}.sql
+          📦 Taille : {{ (item.stat.size / 1024) | round(1) }} KB
+      loop: "{{ backup_stat.results }}"
+
+    - name: Supprimer les backups plus anciens que {{ retention_jours }} jours
+      find:
+        paths: "{{ backup_dossier }}"
+        age: "{{ retention_jours }}d"
+        recurse: yes
+        file_type: file
+      register: vieux_backups
+
+    - name: Afficher les fichiers à supprimer
+      debug:
+        msg: "🗑️ {{ vieux_backups.files | length }} fichier(s) ancien(s) à supprimer"
+
+    - name: Supprimer les vieux backups
+      file:
+        path: "{{ item.path }}"
+        state: absent
+      loop: "{{ vieux_backups.files }}"
+      when: vieux_backups.files | length > 0
+
+    - name: Générer rapport de backup
+      copy:
+        content: |
+          ═══════════════════════════════════════
+          RAPPORT BACKUP — {{ backup_date }} {{ backup_heure }}
+          ═══════════════════════════════════════
+          Serveur    : {{ ansible_hostname }}
+          Date       : {{ backup_date }}
+          Heure      : {{ backup_heure }}
+          Rétention  : {{ retention_jours }} jours
+          ── Bases sauvegardées ──────────────────
+          {% for item in backup_stat.results %}
+          ✅ {{ item.item }} — {{ (item.stat.size / 1024) | round(1) }} KB
+          {% endfor %}
+          Dossier : {{ backup_dossier }}/{{ backup_date }}/
+          ── Anciens backups supprimés ───────────
+          {{ vieux_backups.files | length }} fichier(s) supprimé(s)
+          ═══════════════════════════════════════
+        dest: "{{ backup_dossier }}/backup_report_{{ backup_date }}.txt"

@@ -1,0 +1,113 @@
+---
+- name: BLOC 3 - Maintenance automatique serveur
+  hosts: local
+  vars:
+    log_retention_jours: 30
+    backup_dossier: "/opt/ansible/backups"
+    alerte_disque_pct: 80
+    alerte_ram_pct: 85
+
+  tasks:
+    - name: "1. Vérifier espace disque"
+      command: df / --output=pcent
+      register: disk_usage
+
+    - name: "2. Extraire pourcentage disque"
+      set_fact:
+        disk_pct: "{{ disk_usage.stdout_lines[1] | replace('%','') | trim | int }}"
+
+    - name: "3. Alerte disque si > {{ alerte_disque_pct }}%"
+      debug:
+        msg: "⚠️ ALERTE DISQUE — {{ disk_pct }}% utilisé — Action requise !"
+      when: disk_pct | int > alerte_disque_pct
+
+    - name: "4. Disque OK"
+      debug:
+        msg: "✅ Disque OK — {{ disk_pct }}% utilisé"
+      when: disk_pct | int <= alerte_disque_pct
+
+    - name: "5. Vérifier RAM disponible"
+      command: free -m
+      register: ram_info
+
+    - name: "6. Nettoyer les images Docker inutilisées"
+      command: docker image prune -f
+      register: docker_prune
+      become: yes
+
+    - name: "7. Afficher espace Docker libéré"
+      debug:
+        msg: "🐳 Docker nettoyé : {{ docker_prune.stdout }}"
+
+    - name: "8. Nettoyer les conteneurs arrêtés"
+      command: docker container prune -f
+      register: container_prune
+      become: yes
+
+    - name: "9. Vérifier les conteneurs en cours"
+      command: docker ps --format "{% raw %}{{.Names}}{% endraw %} — {% raw %}{{.Status}}{% endraw %}"
+      register: conteneurs_actifs
+
+    - name: "10. Afficher conteneurs actifs"
+      debug:
+        msg: "{{ conteneurs_actifs.stdout_lines }}"
+
+    - name: "11. Nettoyer les anciens logs système"
+      command: journalctl --vacuum-time={{ log_retention_jours }}d
+      register: log_clean
+      become: yes
+      ignore_errors: yes
+
+    - name: "12. Mettre à jour les paquets de sécurité"
+      apt:
+        upgrade: safe
+        update_cache: yes
+      become: yes
+      register: apt_upgrade
+
+    - name: "13. Vérifier si reboot nécessaire"
+      stat:
+        path: /var/run/reboot-required
+      register: reboot_required
+
+    - name: "14. Alerter si reboot nécessaire"
+      debug:
+        msg: "⚠️ REBOOT REQUIS — Planifier une fenêtre de maintenance !"
+      when: reboot_required.stat.exists
+
+    - name: "15. Générer rapport maintenance"
+      copy:
+        content: |
+          ══════════════════════════════════════
+          RAPPORT MAINTENANCE — {{ ansible_date_time.date }}
+          ══════════════════════════════════════
+          Serveur    : {{ ansible_hostname }}
+          Date       : {{ ansible_date_time.date }} {{ ansible_date_time.time }}
+
+          ── Santé Système ──────────────────────
+          Disque     : {{ disk_pct }}% utilisé {{ '⚠️ ALERTE' if disk_pct | int > alerte_disque_pct else '✅ OK' }}
+          Reboot     : {{ '⚠️ REQUIS' if reboot_required.stat.exists else '✅ Non requis' }}
+
+          ── Nettoyage Docker ───────────────────
+          Images     : {{ docker_prune.stdout }}
+          Conteneurs : {{ container_prune.stdout }}
+
+          ── Conteneurs actifs ──────────────────
+          {{ conteneurs_actifs.stdout }}
+
+          ── Mises à jour sécurité ──────────────
+          {{ apt_upgrade.stdout | default('Aucune mise à jour') }}
+          ══════════════════════════════════════
+        dest: /opt/ansible/rapports/maintenance_{{ ansible_date_time.date }}.txt
+
+    - name: "16. Résumé final"
+      debug:
+        msg: |
+          ══════════════════════════════════════
+          ✅ MAINTENANCE TERMINÉE
+          ══════════════════════════════════════
+          Disque      : {{ disk_pct }}%
+          Docker      : Nettoyé
+          Sécurité    : Mise à jour OK
+          Reboot      : {{ '⚠️ Requis' if reboot_required.stat.exists else '✅ Non requis' }}
+          Rapport     : /opt/ansible/rapports/maintenance_{{ ansible_date_time.date }}.txt

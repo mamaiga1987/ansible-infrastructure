@@ -1,0 +1,167 @@
+---
+- name: BLOC 7 - Playbook Maître Infrastructure complète
+  hosts: local
+  become: yes
+  vars_files:
+    - /opt/ansible/secrets.yml
+  vars:
+    actions:
+      - deploy
+      - backup
+      - monitor
+      - securite
+    projets:
+      - nom: ged-v2
+        dossier: /opt/ged-v2
+        port_check: 80
+      - nom: chatbot-v2
+        dossier: /opt/chatbot-v2
+        port_check: 80
+      - nom: bi-stack
+        dossier: /opt/bi-stack
+        port_check: 80
+
+  tasks:
+    - name: "═══ PHASE 1 — VÉRIFICATION PRÉ-DÉPLOIEMENT ═══"
+      debug:
+        msg: "Démarrage du playbook maître — {{ ansible_date_time.date }} {{ ansible_date_time.time }}"
+
+    - name: "1. Vérifier espace disque disponible"
+      command: df / --output=pcent
+      register: disk_check
+
+    - name: "2. Bloquer si disque > 90%"
+      fail:
+        msg: "❌ DISQUE CRITIQUE {{ disk_check.stdout_lines[1] | replace('%','') | trim }}% — Libérez de l'espace avant de déployer !"
+      when: disk_check.stdout_lines[1] | replace('%','') | trim | int > 90
+
+    - name: "3. Disque OK"
+      debug:
+        msg: "✅ Disque {{ disk_check.stdout_lines[1] | trim }} — OK pour déploiement"
+
+    - name: "4. Vérifier que Docker fonctionne"
+      command: docker ps
+      register: docker_check
+
+    - name: "5. Vérifier PostgreSQL"
+      command: docker exec debian-postgres-1 pg_isready
+      register: pg_check
+      ignore_errors: yes
+
+    - name: "6. Statut PostgreSQL"
+      debug:
+        msg: "{{ '✅ PostgreSQL prêt' if not pg_check.failed else '❌ PostgreSQL non disponible' }}"
+
+    - name: "═══ PHASE 2 — DÉPLOIEMENT PROJETS ═══"
+      debug:
+        msg: "Déploiement de {{ projets | length }} projets"
+
+    - name: "7. Mettre à jour chaque projet depuis GitHub"
+      command: git -C {{ item.dossier }} pull origin main
+      register: git_results
+      ignore_errors: yes
+      loop: "{{ projets }}"
+      become: no
+
+    - name: "8. Résultat git pull par projet"
+      debug:
+        msg: "{{ item.item.nom }} : {{ item.stdout | default('Erreur') }}"
+      loop: "{{ git_results.results }}"
+
+    - name: "═══ PHASE 3 — BACKUP ═══"
+      debug:
+        msg: "Sauvegarde PostgreSQL en cours..."
+
+    - name: "9. Backup PostgreSQL"
+      shell: >
+        docker exec debian-postgres-1 pg_dump -U n8n n8n
+        > /data/ansible-backups/auto_backup_{{ ansible_date_time.date }}.sql
+      ignore_errors: yes
+
+    - name: "10. Vérifier backup créé"
+      stat:
+        path: /data/ansible-backups/auto_backup_{{ ansible_date_time.date }}.sql
+      register: backup_check
+
+    - name: "11. Statut backup"
+      debug:
+        msg: "{{ '✅ Backup créé : ' + (backup_check.stat.size / 1024 / 1024) | round(1) | string + ' MB' if backup_check.stat.exists else '❌ Backup échoué' }}"
+
+    - name: "═══ PHASE 4 — MONITORING ═══"
+      debug:
+        msg: "Vérification santé de l'infrastructure..."
+
+    - name: "12. Compter conteneurs actifs"
+      command: docker ps -q
+      register: conteneurs_actifs
+
+    - name: "13. Vérifier frontend principal"
+      wait_for:
+        host: localhost
+        port: 80
+        timeout: 5
+      register: frontend_check
+      ignore_errors: yes
+
+    - name: "14. Vérifier PostgreSQL port"
+      wait_for:
+        host: 172.19.0.18
+        port: 5432
+        timeout: 5
+      register: pg_port_check
+      ignore_errors: yes
+
+    - name: "═══ PHASE 5 — RAPPORT FINAL ═══"
+      debug:
+        msg: "Génération du rapport final..."
+
+    - name: "15. Générer rapport maître"
+      copy:
+        content: |
+          ╔══════════════════════════════════════════╗
+          ║   RAPPORT MAÎTRE INFRASTRUCTURE          ║
+          ╠══════════════════════════════════════════╣
+          ║ Date    : {{ ansible_date_time.date }}               ║
+          ║ Heure   : {{ ansible_date_time.time }}            ║
+          ║ Serveur : {{ ansible_hostname }}          ║
+          ╠══════════════════════════════════════════╣
+          ║ PHASE 1 — PRÉ-VÉRIFICATION               ║
+          ╠══════════════════════════════════════════╣
+          Disque      : {{ disk_check.stdout_lines[1] | trim }}
+          Docker      : ✅ Actif
+          PostgreSQL  : {{ '✅ Prêt' if not pg_check.failed else '❌ Erreur' }}
+
+          ╠══════════════════════════════════════════╣
+          ║ PHASE 2 — DÉPLOIEMENT                    ║
+          ╠══════════════════════════════════════════╣
+          {% for item in git_results.results %}
+          {{ item.item.nom }} : {{ '✅ ' + item.stdout if not item.failed else '❌ Erreur' }}
+          {% endfor %}
+
+          ╠══════════════════════════════════════════╣
+          ║ PHASE 3 — BACKUP                         ║
+          ╠══════════════════════════════════════════╣
+          PostgreSQL  : {{ '✅ ' + (backup_check.stat.size / 1024 / 1024) | round(1) | string + ' MB' if backup_check.stat.exists else '❌ Échoué' }}
+
+          ╠══════════════════════════════════════════╣
+          ║ PHASE 4 — MONITORING                     ║
+          ╠══════════════════════════════════════════╣
+          Conteneurs  : {{ conteneurs_actifs.stdout_lines | length }} actifs
+          Frontend    : {{ '✅ Accessible' if not frontend_check.failed else '❌ Inaccessible' }}
+          PostgreSQL  : {{ '✅ Port ouvert' if not pg_port_check.failed else '❌ Port fermé' }}
+          ╚══════════════════════════════════════════╝
+        dest: /opt/ansible/rapports/master_{{ ansible_date_time.date }}.txt
+
+    - name: "16. Résumé final"
+      debug:
+        msg: |
+          ╔══════════════════════════════════════════╗
+          ║   ✅  PLAYBOOK MAÎTRE TERMINÉ             ║
+          ╠══════════════════════════════════════════╣
+          ║ Disque     : {{ disk_check.stdout_lines[1] | trim }}                    ║
+          ║ Conteneurs : {{ conteneurs_actifs.stdout_lines | length }} actifs                    ║
+          ║ Backup     : {{ '✅ OK' if backup_check.stat.exists else '❌ KO' }}                        ║
+          ║ Frontend   : {{ '✅ OK' if not frontend_check.failed else '❌ KO' }}                        ║
+          ║ PostgreSQL : {{ '✅ OK' if not pg_port_check.failed else '❌ KO' }}                        ║
+          ╚══════════════════════════════════════════╝
+          Rapport : /opt/ansible/rapports/master_{{ ansible_date_time.date }}.txt
