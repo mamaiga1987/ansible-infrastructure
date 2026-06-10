@@ -5,6 +5,7 @@
 
   tasks:
     - name: "1. Vérifier les ports ouverts"
+      tags: [securite, ports, audit]
       command: ss -tlnp
       register: ports_ouverts
 
@@ -21,6 +22,7 @@
         msg: "{{ connexions.stdout_lines }}"
 
     - name: "5. Compter tentatives SSH échouées"
+      tags: [securite, ssh, audit]
       shell: grep -c "Failed password" /var/log/auth.log || echo "0"
       register: failed_logins
 
@@ -38,6 +40,7 @@
         msg: "Utilisateurs sudo : {{ sudo_users.stdout | default('aucun') }}"
 
     - name: "9. Vérifier PermitRootLogin SSH"
+      tags: [securite, ssh, audit]
       shell: sshd -T | grep permitrootlogin
       register: root_login
       ignore_errors: yes
@@ -47,6 +50,7 @@
         msg: "{{ '⚠️ ROOT LOGIN AUTORISÉ !' if 'yes' in root_login.stdout else '✅ Root login désactivé' }}"
 
     - name: "11. Vérifier les mises à jour de sécurité disponibles"
+      tags: [securite, apt, audit]
       shell: apt list --upgradable 2>/dev/null | grep -c security || echo "0"
       register: security_updates
 

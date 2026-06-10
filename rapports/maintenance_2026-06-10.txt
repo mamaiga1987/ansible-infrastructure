@@ -1,0 +1,53 @@
+══════════════════════════════════════
+RAPPORT MAINTENANCE — 2026-06-10
+══════════════════════════════════════
+Serveur    : vps-659fea22
+Date       : 2026-06-10 09:18:31
+
+── Santé Système ──────────────────────
+Disque     : 61% utilisé ✅ OK
+Reboot     : ✅ Non requis
+
+── Nettoyage Docker ───────────────────
+Images     : Non exécuté
+Conteneurs : Non exécuté
+
+── Conteneurs actifs ──────────────────
+debian-traefik-1 — Up 10 hours
+ged-v2-frontend — Up 10 hours
+ged-v2-backend — Up 10 hours
+chatbot-v2-backend — Up 10 hours
+chatbot-v2-frontend — Up 10 hours
+chunker-service — Restarting (2) 38 seconds ago
+frontend — Up 12 hours
+superset-backend — Up 12 hours
+doctracker-backend — Up 12 hours
+doctracker-frontend — Up 12 hours
+adminia-backend — Up 12 hours
+adminia-frontend — Up 12 hours
+adminia-landing — Up 8 hours
+superset — Up 12 hours (healthy)
+superset-db — Up 12 hours (healthy)
+tooltip-api — Up 12 hours
+superset-cache — Up 12 hours (healthy)
+chatbot-3f-yvelines — Up 12 hours
+doctracker-saas-frontend — Up 12 hours
+doctracker-saas-backend — Up 12 hours
+doctracker-saas-db — Up 12 hours (healthy)
+superset_app — Up 3 seconds (health: starting)
+superset_cache — Up 12 hours
+debian-postgres-1 — Up 12 hours (healthy)
+debian-n8n-1 — Up 12 hours
+debian-mysql-1 — Up 12 hours (healthy)
+
+── Mises à jour sécurité ──────────────
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages were automatically installed and are no longer required:
+  libltdl7 libslirp0 slirp4netns
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+══════════════════════════════════════

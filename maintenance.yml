@@ -9,6 +9,7 @@
 
   tasks:
     - name: "1. Vérifier espace disque"
+      tags: [maintenance, disque, verification]
       command: df / --output=pcent
       register: disk_usage
 
@@ -31,20 +32,25 @@
       register: ram_info
 
     - name: "6. Nettoyer les images Docker inutilisées"
+      tags: [maintenance, docker, nettoyage]
       command: docker image prune -f
       register: docker_prune
       become: yes
 
     - name: "7. Afficher espace Docker libéré"
+      tags: [maintenance, docker, nettoyage]
       debug:
         msg: "🐳 Docker nettoyé : {{ docker_prune.stdout }}"
 
     - name: "8. Nettoyer les conteneurs arrêtés"
+      tags: [maintenance, docker, nettoyage]
+      tags: [maintenance, docker, nettoyage]
       command: docker container prune -f
       register: container_prune
       become: yes
 
     - name: "9. Vérifier les conteneurs en cours"
+      tags: [maintenance, docker, verification]
       command: docker ps --format "{% raw %}{{.Names}}{% endraw %} — {% raw %}{{.Status}}{% endraw %}"
       register: conteneurs_actifs
 
@@ -59,6 +65,7 @@
       ignore_errors: yes
 
     - name: "12. Mettre à jour les paquets de sécurité"
+      tags: [maintenance, securite, apt]
       apt:
         upgrade: safe
         update_cache: yes
@@ -89,8 +96,8 @@
           Reboot     : {{ '⚠️ REQUIS' if reboot_required.stat.exists else '✅ Non requis' }}
 
           ── Nettoyage Docker ───────────────────
-          Images     : {{ docker_prune.stdout }}
-          Conteneurs : {{ container_prune.stdout }}
+          Images     : {{ docker_prune.stdout | default("Non exécuté") }}
+          Conteneurs : {{ container_prune.stdout | default("Non exécuté") }}
 
           ── Conteneurs actifs ──────────────────
           {{ conteneurs_actifs.stdout }}

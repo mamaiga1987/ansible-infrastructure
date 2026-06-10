@@ -4,6 +4,7 @@
 
   tasks:
     - name: "1. Récupérer l'IP actuelle de PostgreSQL"
+      tags: [postgres, ip, reboot]
       command: docker inspect debian-postgres-1 --format "{% raw %}{{.NetworkSettings.Networks.web.IPAddress}}{% endraw %}"
       register: pg_ip
 
@@ -12,6 +13,7 @@
         msg: "IP PostgreSQL actuelle : {{ pg_ip.stdout }}"
 
     - name: "3. Chercher tous les fichiers Python dans /opt/"
+      tags: [postgres, ip, reboot]
       find:
         paths: /opt
         patterns: "*.py"
@@ -19,6 +21,7 @@
       register: fichiers_python
 
     - name: "4. Corriger l'IP dans TOUS les fichiers Python"
+      tags: [postgres, ip, correction]
       replace:
         path: "{{ item.path }}"
         regexp: '172\.19\.0\.\d+'
@@ -35,6 +38,7 @@
       register: compose_files
 
     - name: "6. Restart tous les conteneurs"
+      tags: [docker, restart, reboot]
       command: docker compose -f {{ item.path }} restart
       loop: "{{ compose_files.files }}"
       ignore_errors: yes

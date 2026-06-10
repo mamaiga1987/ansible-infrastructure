@@ -5,6 +5,7 @@
 
   tasks:
     - name: "1. Scanner tous les projets dans /opt/"
+      tags: [deploy, scan]
       find:
         paths: /opt
         file_type: directory
@@ -12,18 +13,21 @@
       register: tous_dossiers
 
     - name: "2. Filtrer les dossiers avec git (projets GitHub)"
+      tags: [deploy, scan]
       stat:
         path: "{{ item.path }}/.git"
       register: git_check
       loop: "{{ tous_dossiers.files }}"
 
     - name: "3. Construire la liste des projets git"
+      tags: [deploy, scan]
       set_fact:
         projets_git: "{{ projets_git | default([]) + [item.item.path] }}"
       loop: "{{ git_check.results }}"
       when: item.stat.exists
 
     - name: "4. Afficher les projets détectés"
+      tags: [deploy, info]
       debug:
         msg: |
           ══════════════════════════════════
@@ -34,29 +38,34 @@
           {% endfor %}
 
     - name: "5. Sauvegarder version actuelle"
+      tags: [deploy, scan]
       command: git -C {{ item }} rev-parse --short HEAD
       register: versions_avant
       loop: "{{ projets_git | default([]) }}"
       ignore_errors: yes
 
     - name: "6. Git pull sur chaque projet"
+      tags: [deploy, git, mise_a_jour]
       command: git -C {{ item }} pull origin main
       register: git_results
       loop: "{{ projets_git | default([]) }}"
       ignore_errors: yes
 
     - name: "7. Résultat par projet"
+      tags: [deploy, git, info]
       debug:
         msg: "{{ item.item | basename }} → {{ item.stdout | default('Erreur ou pas de remote') }}"
       loop: "{{ git_results.results }}"
 
     - name: "8. Logger le déploiement"
+      tags: [deploy, log]
       lineinfile:
         path: /opt/ansible/configs/deploy_history.log
         line: "{{ ansible_date_time.date }} {{ ansible_date_time.time }} | {{ projets_git | default([]) | length }} projets mis à jour"
         create: yes
 
     - name: "9. Résumé final"
+      tags: [deploy, info]
       debug:
         msg: |
           ✅ DÉPLOIEMENT TERMINÉ
