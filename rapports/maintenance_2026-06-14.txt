@@ -1,0 +1,114 @@
+══════════════════════════════════════
+RAPPORT MAINTENANCE — 2026-06-14
+══════════════════════════════════════
+Serveur    : vps-659fea22
+Date       : 2026-06-14 03:00:05
+
+── Santé Système ──────────────────────
+Disque     : 62% utilisé ✅ OK
+Reboot     : ✅ Non requis
+
+── Nettoyage Docker ───────────────────
+Images     : Deleted Images:
+deleted: sha256:806a591e3fd1745904f94a1e4747725157e916712dff495aae7325224ed1059f
+deleted: sha256:a18babd5e712ade5450c5dc9317ebbccc8adf17af6c5716316de7a3714da2e58
+deleted: sha256:d7c26e302b8d29f9edb1d5b0766ff52df9204d9c36386bffa1b40ff5c519f58b
+deleted: sha256:4489016ff8e78b5b3b4cce618dcf91b646a0b95f7182abc08d475eb80183aaa7
+deleted: sha256:3a46e87278ab4ab930eb2a5662d803ef845b664e20fbaf906bc5bd375b1a82de
+deleted: sha256:5a211c12c03085b6e038f7347655833eacd5ed37a46ef682e26fe76b11a2f1b3
+deleted: sha256:ee118377e24b74bf63b68abeaaa5f076c626b372ca34e4afb44c271e23f8612f
+deleted: sha256:85e7a63d3b352f32a306628190daeaa7a04e05d5d70258f4d2c2021fbe337323
+deleted: sha256:8ea99a424e4c18755f5931721c85deba681602e27a5ca0deda5081a527ce3656
+deleted: sha256:1dc85533dab622fad392b49a0a142996ea8d22fcfbab5f319942a6931c1bd69a
+deleted: sha256:e529f6767f952454d2d19e0e2a5439f2e5a66dc62f33e8f5cec019a28d6f565f
+deleted: sha256:8ca8aa400390d75fd5232e342d463dcaadc9916595443d03cf18132ff7e9bfc5
+deleted: sha256:3960d42f6db4c24c3ee013c6023516ed47d15e9d9fa96871f9f23c36caec2677
+deleted: sha256:bdf43d88809a7913521ade7cba776a28d6b8dcb858a03819c553b382e5012e15
+deleted: sha256:370042a4fc58461a5fa215b93a497f37ec0f8a06d9ee24aa1270d43dc52159d5
+deleted: sha256:303b8972a4bd1dad1b1cdca15dc59bc1041f12ac4c73d4c1c42097392f118d9d
+deleted: sha256:eea1276cfcb8358cbd9855d55865acadd8fef716cc7f0f60d3b8b1b1a35e0cd1
+deleted: sha256:7795d68c43ab2d9bb0ff5c83174d4f3dc896e01229d963bad81d4cb86b85a8a0
+deleted: sha256:2002c6bcb68b8f2a3dd6f4f5ec6cf908865022e9ea3352edc54eef43f83b88fe
+deleted: sha256:ede3923e56d41080067246bb99834e5d5e3dd7f28f36b1a9a642a15bc246ca70
+deleted: sha256:eda91e82ca07438bed458b52dd0a047c1b8c3cf0027d68ff14a4d91ddd82d7a5
+deleted: sha256:a19291e2c94310ce3a78c96dc0106f088784d51aad8e0c3a57f85c8d7af51574
+deleted: sha256:6094c8184800341cf1fe4dc44c30207c0eadf6056dceefea2febc2f305e0d2ff
+deleted: sha256:d46215b5db91ad8826af95d34059775c3d9872fb60ad3728a920c335ab76b16d
+deleted: sha256:341624cb6e4dcdc6855c1cf7f92b494aa44dadb177d013885560c4da2a0e6165
+deleted: sha256:53f5c00e08cc66c222df8d89d38f8c71b1ddccdbc665dd3edad8f74d9f5bd399
+deleted: sha256:c84449bdcc7c43e578352bd071421f1d076b3a176aef560de2191c8d2f707bfa
+deleted: sha256:378c679ab99ed9abe40c6905c80ef4abe7e9a9590ff0eb553ec512ae36da458e
+deleted: sha256:5e31181a90de0c02b25bb17b3a450ac2652604719339347c04af0a0985968b86
+deleted: sha256:4c5bcd47370431481d28a427df2421bf10ff0eaf096bd631bd6eefc531b38571
+deleted: sha256:d81e91534c225075d17d30016340926a73ad2eb01ea9bc5ecaa642667a170c16
+deleted: sha256:cd89aa00ebab9d8b02954f269c27975a2c12bf6875888dc90df08267652374c0
+deleted: sha256:12cef516f6c111a37b0d8ab694543e47cb7eb14462b6ae47c9a8ce714d8c2c2a
+deleted: sha256:95b9abc7d017df57aaf29e23e9ce0762bb63d5853344ca1bcb3d3bda9075af25
+deleted: sha256:5db13b528c2867b1d67457b631890927a1eca043525c8d5967b5e993430ba4ae
+deleted: sha256:ea415ceafb5e19de9d247759fb33b27eab93db0cb7dc678a49a33b42d519b7c9
+deleted: sha256:07d214c23065e73b25b9f7add77e6aec9c3b46c45c95f723491bb4bcd032dd2b
+deleted: sha256:db603d4b77e90d2b2605834b63bf003c81bad1f6ff363afd0ab78e1781f4af9a
+deleted: sha256:e1ce2a82d0a96b48003221ad9a307480c8cf0e3fd975a96e6d1601e319eeac8c
+deleted: sha256:82ff0462204cfd1719328e9dcd319527a3fc00e4c80fc7f98358dfee6a142fea
+
+Total reclaimed space: 4.289MB
+Conteneurs : Total reclaimed space: 0B
+
+── Conteneurs actifs ──────────────────
+jobassistant-backend — Up 5 minutes
+jobassistant-frontend — Up 48 minutes
+doctracker-frontend — Up 27 hours
+doctracker-backend — Up 27 hours
+chunker-service — Up 2 days
+busy_chaplygin — Up 2 days
+xenodochial_hugle — Up 2 days
+goofy_poincare — Up 2 days
+debian-traefik-1 — Up 4 days
+ged-v2-frontend — Up 4 days
+ged-v2-backend — Up 3 days
+chatbot-v2-backend — Up 3 days
+chatbot-v2-frontend — Up 4 days
+frontend — Up 4 days
+superset-backend — Up 4 days
+adminia-backend — Up 4 days
+adminia-frontend — Up 4 days
+adminia-landing — Up 4 days
+fete-voisins-backend — Up 2 days
+fete-voisins-frontend — Up 2 days
+fete-voisins-db — Up 2 days (healthy)
+superset — Up 4 days (healthy)
+superset-db — Up 4 days (healthy)
+tooltip-api — Up 4 days
+superset-cache — Up 4 days (healthy)
+chatbot-3f-yvelines — Up 4 days
+doctracker-saas-frontend — Up 4 days
+doctracker-saas-backend — Up 4 days
+doctracker-saas-db — Up 4 days (healthy)
+superset_app — Up 1 second (health: starting)
+superset_cache — Up 4 days
+debian-postgres-1 — Up 4 days (healthy)
+debian-n8n-1 — Up 4 days
+debian-mysql-1 — Up 4 days (healthy)
+
+── Mises à jour sécurité ──────────────
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages were automatically installed and are no longer required:
+  libltdl7 libslirp0 slirp4netns
+Use 'sudo apt autoremove' to remove them.
+The following packages will be upgraded:
+  linux-base
+apt-listchanges: Reading changelogs...
+Preconfiguring packages ...
+1 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 0 B/25.6 kB of archives.
+After this operation, 1024 B disk space will be freed.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 96087 files and directories currently installed.)
+Preparing to unpack .../linux-base_4.12.1~deb12u1_all.deb ...
+Unpacking linux-base (4.12.1~deb12u1) over (4.9) ...
+Setting up linux-base (4.12.1~deb12u1) ...
+Processing triggers for man-db (2.11.2-2) ...
+
+══════════════════════════════════════
