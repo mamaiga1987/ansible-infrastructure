@@ -38,3 +38,7 @@
         msg: |
           {{ '✅ GitHub mis à jour' if not push_result.failed else '⚠️ Push échoué' }}
           {{ commit_result.stdout | default('Rien à committer') }}
+
+    - name: Git push JobAssistant IA
+      shell: cd /opt/jobassistant && git add -A && git commit -m 'Auto backup 2026-06-16' && git push origin main || true
+      ignore_errors: yes

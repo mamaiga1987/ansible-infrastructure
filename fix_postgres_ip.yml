@@ -1,6 +1,6 @@
 ---
 - name: Fix IP PostgreSQL — TOUS les projets Python
-  hosts: local
+  hosts: localhost
 
   tasks:
     - name: "1. Récupérer l'IP actuelle de PostgreSQL"
@@ -49,3 +49,21 @@
           IP PostgreSQL : {{ pg_ip.stdout }}
           Fichiers Python corrigés : {{ fichiers_python.files | length }}
           Projets redémarrés : {{ compose_files.files | length }}
+
+    - name: "8. Connecter jobassistant-backend au réseau n8n"
+      tags: [jobassistant, network, reboot]
+      shell: docker network connect debian_default jobassistant-backend 2>/dev/null || true
+
+    - name: "9. Connecter jobassistant-backend au réseau bi-stack"
+      tags: [jobassistant, network, reboot]
+      shell: docker network connect bi-stack_analytics-net jobassistant-backend 2>/dev/null || true
+
+    - name: "10. Vérifier santé JobAssistant backend"
+      tags: [jobassistant, health]
+      shell: docker exec jobassistant-backend wget -qO- http://localhost:4003/api/health
+      register: ja_health
+      ignore_errors: yes
+
+    - name: "11. Afficher statut JobAssistant"
+      debug:
+        msg: "JobAssistant backend: {{ ja_health.stdout | default('Non disponible') }}"
