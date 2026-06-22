@@ -1,0 +1,261 @@
+══════════════════════════════════════
+RAPPORT MAINTENANCE — 2026-06-21
+══════════════════════════════════════
+Serveur    : vps-659fea22
+Date       : 2026-06-21 03:00:03
+
+── Santé Système ──────────────────────
+Disque     : 62% utilisé ✅ OK
+Reboot     : ✅ Non requis
+
+── Nettoyage Docker ───────────────────
+Images     : Deleted Images:
+deleted: sha256:80ac601635c9b0a2f1befaf63b554bdfad32b46eef75c63a859c70607b95d69f
+deleted: sha256:caf0a3e666ddb3f9679bc019cc3356dc4c8f33f12b68e5766bf7a50745217e81
+deleted: sha256:9ae641df00a7ac4132ad7eac963f035531d6fc26cf8d6882813a21efdeb427b3
+deleted: sha256:e61187a8b56baa8e4fe058e05d43b52de12650243b8c15f661dad4512079fceb
+deleted: sha256:80883c83a09f8a7dac3b155c3a27333be3389f32ed07be5787212225ac29d13a
+deleted: sha256:7b80c138892dc4599548a1bbcbdb85317cf6452f12927f415c0e3e273802b7c4
+deleted: sha256:3bbd768bbcf69bb8ceaeff695ea01c90f82e5031a07e2665fc5c79e8418addbb
+deleted: sha256:a707b80a5dc901e1f15385ed8d75b797ee28b1ccfc11a44d47eb879e3be6522a
+deleted: sha256:bf20be268d22da2082749fdb206de61473995fd9d62fdd2b32fd7d8f4848abb4
+deleted: sha256:5816fb3ac9937adb440e31ac322d3f9f41e1460901c8cdb4cf57cc739f8cf73b
+deleted: sha256:353333907e3ec276be64b312011510e74afaa0f1826e068c5a0879e09e80b8ae
+deleted: sha256:049e348059b9ad017e060f047be4a9c8269b95dce7d002858827c5eaed271563
+deleted: sha256:5ffa8e14831145f8b3b2f863f36dad342a17bf6b1cf3e6ae495df463c114022c
+deleted: sha256:9de977e4e4162a9e2de4eb5383e2350b0df70a4f09cfeffd604160696f81d743
+deleted: sha256:9ce0e59d7a5a73d7accb9ce8161de7f5572df5d461e9c93bbf8e8792b4ba1c6b
+deleted: sha256:6e62c8ae438d5868eb281ca25708058f8bf8ac7a608b3acc2daaf04cd84beab9
+deleted: sha256:4ffc5ac5c6c805b4dc3b05b2566a5e42ceb19f2ce46ca8a5ed20fc305a7ef57d
+deleted: sha256:4cc22e9b2251402e69b5211d336a163f59c115c4f46051b6bdf719ec12c29584
+deleted: sha256:3e6b9b6276139039e0dc2ebdca3106395a40aef38265b9fe2085874bd9936731
+deleted: sha256:05f811bac683e5de2c36ff48e2022859396d58c024a22246341a6c7006505ffe
+deleted: sha256:bdb8c480babb5f789e4762a5596013bb7e882e026bda0195cf6424bce7a2128e
+deleted: sha256:63d8b005344a55c26be32555d9d212a466c085adb413f10a35f79867cee48725
+deleted: sha256:225145dd57c9f77a071a47381c998d32e456d144d966193f454fe549d833ddc7
+deleted: sha256:b5b42415fcb087e52d82adbacca0cfdb2d229901cf5457d97b97fcff454955b1
+deleted: sha256:792c5346d78310c610dbe387f21c4edb690e078c0fb5ae52dfeee3a7a06ce3c4
+deleted: sha256:032a8be3a0918c95c552b4c147258b1e2c25ec8277b1f46520f5ea2d7431b8d0
+deleted: sha256:d2ee22adbd46f80c595701d9ed0cbd6864457f4f008819d8541f0bfedde16b63
+deleted: sha256:eb0a9598cfb264ce8651ddf909f3da4e104870b78198fbf9640101a3d20f2bdb
+deleted: sha256:4c44195a3f262c9eb4f7e5cf2ce79c630106eab65f96a448dc5169bbcfc9eb90
+deleted: sha256:85607524861f0c49ec5c8c318ce3aabf714eb3e2fb7b52ee7f134c79abbc49b3
+deleted: sha256:ae2a4bde4b125855806445fb3a8afd924b6189eb8973c4273c143e46cfb475f9
+deleted: sha256:d98345d51b044ff86f637c7e03b76d043a36e59b660bf372f35b1107b164bb57
+deleted: sha256:057dc57ff3c37684deea116003066b11bc1bdfd5920a96d00cce6397a15504eb
+deleted: sha256:4ac8e1601d8983748bf4b87223d57e885d79a12dcd16befa9e42ac1c2b0b8bf1
+deleted: sha256:60ee4ab23f5c6a670b21c84de2e418d597b6d0f7ee9e1989a478bb0f2481d57e
+deleted: sha256:00c2a14700cffd827500d1820028783f30832ea61d5a562b0dff16cc52a90aba
+deleted: sha256:2accb64884d20ad27b2d9fd24a7dda4591698545b92dbb48c823b91c1592b972
+deleted: sha256:d009d6f75a9c960ad9b9e351dde6fc45b505ed948a3d610c6c9c384122ac48c0
+deleted: sha256:c7e4200c2cb04fa61d8ed5545abeb9af6e4749e89d6e05c0192cde0eae224efb
+deleted: sha256:b2513db5b6557265db395a097a94a771ca8b9cb30dd868e811914962842e119b
+deleted: sha256:838b546063e39bf0e789a3f30713bbd44a9a6bbf7d47e48b4a5edb5ba7439f77
+deleted: sha256:ba3599cc395748c65253f1bd6a4fa01d08f196406237425ef9cdf1ccd1f01599
+deleted: sha256:89bb16e7b4073623363b9d82a1b03ef03df1fb26dca8088bc957077649dedadd
+deleted: sha256:680063b45bdc45654f6f1c85ec09233831b4e013015a880794e91748ae6d4ff8
+deleted: sha256:f2364362a066595aedc167edf66241177c85ddc21b7de03aa43faf5b7d0dd1cf
+deleted: sha256:69e2e35cd6c7c00e2d614483cadea3aceedcae6fda09a26c928c961e1b54212f
+deleted: sha256:8227ef0de4ee7fc784457096c83128ddf357ed463d7a23ea7f2a5cf24c511d1c
+deleted: sha256:d0a74a07ef2e3801a832361ac3dadc3582f26d6f0e70da6450bde583c6f9bc34
+deleted: sha256:9981341e65b872a8ecfc42e6228e7d0eb9cdefe554f3de712f7fdea7f45c2624
+deleted: sha256:274ad84ef302ab5488851a5e3de4629aca4ce1a39db8c18d0a8c63d196ee2be9
+deleted: sha256:fb00ede3978965c85688dd41cd8468cd2865d4c847fbccb91730f038a63b5df1
+deleted: sha256:8e9c6ac9f705ff2cf0b5d842ad9a41f2938c99b6bb3b9c96fed66b50428641f2
+deleted: sha256:f55c52da63a708e0e5f6d0f0e04f5bac9477c6e4e5b596cfffe3d5fd202f00bf
+deleted: sha256:c1b62e84f23fc2d240f602266c77a3b7dc779b18062b367758b0f2402f2858bc
+deleted: sha256:4ab1f50fa34d3d521a726742a7fcb1fa02b30434f81f2cd9c2a583ad83eaee78
+deleted: sha256:dfbd9eeb6eb1a9c4c4bc54fb68db1111a514fdb3cd294ab923f07ef58a4a06b9
+deleted: sha256:d46b9561745e247decef3a24376f3f4fd58c3ed92ef9da7b94a908c9279f110f
+deleted: sha256:48694fa373be1a584e46b5a7f47735d62af6e7f3ab19c869ddd39cfa24162658
+deleted: sha256:5d819acb79afe05e9b8ecf5bf22f1f5fa5902ddc590320463a478427fd0164f9
+deleted: sha256:0f2672645bc3a72ddba7a68162044b8d1f8a8a144aa25cc08516e36f0fff128c
+deleted: sha256:b338f6e058d1972d0218f591473c51466e826740f09108bfd1fab52972168cb1
+deleted: sha256:4e29087c2c0deedc797b7e8da176cbd1cd32e2fa0241c0a021843d899b6a9ece
+deleted: sha256:1b12801475e1abb68d50b878cf53be1fff838148728f9820d0d114d1095d9d6d
+deleted: sha256:3e045ff905cd0c762d3569a4853dcdedf08ff7c477b433e89e3da45e1636cf7a
+deleted: sha256:055e43a3aa07d9d22550668b1540e3da3bd5fffef08972e66dbd1b99761d74d7
+deleted: sha256:b51bd4e6ebd78ada80069497708933daebb72609d413f8863fa57ad771280d03
+deleted: sha256:439653585e1d1d5f2bb5d2f9488777b80551a7c0238b488716e27cffad9cb9a0
+deleted: sha256:22d2f4243a622fd9e1208a133143b044b899d8ef01291c42ae88bb9149dc1f88
+deleted: sha256:fdc5429df07f37a475134d708f90e440d7bad85eb466ac5571cee7de39a861fd
+deleted: sha256:d90e4b089e6ce4750cefc574adae326c3825b93339ff45f855cdb9ab76fc02d2
+deleted: sha256:e587fa07a1192f915f729efcf974efbbe270f2006be42fe875282b28cb2621b7
+deleted: sha256:fbd009812daa5bd5a9cd99fd85ff79e2cc124a0191be16767718439c82e62311
+deleted: sha256:b4eeed2a8bd23c5ada4c6becedaa4419e6e609635b537db4e59b0c715ae5802a
+deleted: sha256:806a57b095219697cd498bec2d97614773ae630112b676c092bddcfcd6b57e1c
+deleted: sha256:f888b8dd8b215dd0924d9d4290c40254277f85f9791d73505041230acddcef03
+deleted: sha256:67f326c6da4131e3f72594b1da29129a8409545c34abc236f7ab7f2fa7d841ee
+deleted: sha256:206d493f9cabc0b3ba59dbb87db19187bafdbab6eebdb24bcb97db73f913870c
+deleted: sha256:a93b1a32e4c2d38043b87340a5d25fe128ba3dd347e32c9a44850df1716c3a06
+deleted: sha256:f40bac5404e641a63f02f86181cd5becfe756eb16aca03b4d60343b6de6d077b
+deleted: sha256:dba7de37ddd86d1ef1972f3014924c87f010783851d9bb2e267f287fd75ecb05
+deleted: sha256:242cde943ec742a2b6b7c94318efc0443010e0c60c5b1468b8129c0c2675fe00
+deleted: sha256:74ed5b888b97f0e8e8c6d2327898992aa51c92e9b9e3283a999482f051ce1563
+deleted: sha256:b1ace08dcbc8857ce98376d5f8e4d5beec1a38d188a7b15553d2a91b381e466f
+deleted: sha256:b3210ad84bd51de369dbe8b2372b158a208373fda03648ee65d71def76052a68
+deleted: sha256:67af0bafc2108b1bac803959faf8d30b2c1dcafe47ded9012f00a70f06f2d692
+deleted: sha256:61dd1174ef03dfbc953d6900b6026c31701b50c69c20936cdc3a925ebd8bdcc3
+deleted: sha256:660d0d38f5ee873241cab566b37eddb9d7f1b64f51dc669d76f1ed85a9cf4e56
+deleted: sha256:c4f3bab166cf8ccf8eb5fec6997b11f693e62baa1c46c2a223d18b1a00659df4
+deleted: sha256:492e8adec96f6284b45bd7aaf02652bc4083b280ab3b373990be3693d16574c3
+deleted: sha256:e3893c9c1f1d27e7bd4cdba04bbce6a6ee4947f2574e14188b8b28e8d1394982
+deleted: sha256:086c58d594f7719f8b3d759e7e8f1d0b7bbdc9b8c8cd8807743f295b682f64d5
+deleted: sha256:84f656de0def86daa7f73d301f70fdf8ac7f86adfc47062f4aa82cb557ed00d0
+deleted: sha256:1bbac4863ae76226f016c719aacead7f99f038cbcc38902b5e9b1a8aa3b0e95e
+deleted: sha256:df54ed541d9f091c6993254b689fcd753c4adc1cd29dde2bd04367ced3bf3a49
+deleted: sha256:651a8c9bd804b47ab0e0e0a580ca8a6a3f7f440540ed8fa82ed325fc6fc14818
+deleted: sha256:02ddaa17d555fbf99e19ee816eb38df9f39e49b3160d6c2bfb78f6cbdb9e02b0
+deleted: sha256:9153967cde47b4214ddbc7a3279e0ad1cfe23fda553b2168c9c3c9b99b85dc39
+deleted: sha256:1e0421beb097a796089a4ccbee1b18d1e56f9519358cbf3e6dfc00d9bcb80d67
+deleted: sha256:f21275fcbc555d2b6c9a3d8036d9ec706dd403de6af4aa80a29d70da02212ba5
+deleted: sha256:1305c6508a6b145de31be76205ab507731b35b221b68efe6eca719759010321f
+deleted: sha256:b8850bb191b24daad7e2920bb2f790aef7910032ae84562d5322ebcfac93d0a0
+deleted: sha256:a4af17e021ca4bba799089c405d14e30a00510465cf56ea5fc9c829bf2cfb497
+deleted: sha256:f060fdde71b0739f9e4b2b1ce4ff63df7676fe0f208148b104c095417019372f
+deleted: sha256:c2c91e47e5d13d5433ff4802e066a3f12bf8845c7f42e2361e73c89581ddda3e
+deleted: sha256:70bc0e94113972475185c04061dc03d2d963a823caff85bd472f565cb454cc4c
+deleted: sha256:fec43fe805fd4cfe93b4bdbfacaa78d90b3472fafc65da8187ab13f93661db84
+deleted: sha256:a3d1816baac031dacfa2d9f3763875b6e792f54a86c9fbedac14d8c298bc0684
+deleted: sha256:6aeed090e4050d5deed323d4325272f6ba936cccb950c4e547009012df1d3599
+deleted: sha256:587015c166b38421de5a8fe23dd5fbc26a6be723d22961c411e7da23dc43ae15
+deleted: sha256:0141094627311d8a52c880595b0f00a27aedb457dbc003cd0a45366f8b60043f
+deleted: sha256:d67b3d50aa81e8f826f33e396f65f0abdcc712bf629cd4f84824c5b8347bd52b
+deleted: sha256:490c8f4919b4e7f7bcccf27d7db61e17f771523db20f40f4bbf6ff9151b94cbc
+deleted: sha256:0b7cf8e90fefd1139c6dda29782e5e4502a6f43ba1760e430820f4211e391f75
+deleted: sha256:a5d490d6c0c1e972809ec57ad33a3aa68c1e710a789bce49c18a4fe4619e3eef
+deleted: sha256:39f2cde6fdaaf4be8eae6b26b2545b900be2cefa8f19810fb4d4f57149010e76
+deleted: sha256:9092972f6656860994f207eb311e1218f9e556ab883bf4befa3c02087fbf533e
+deleted: sha256:a192079c9f0ff4159599b475aa2016a0c84bcaeeb64ef56703f798eb0e8296d0
+deleted: sha256:1e5b2a2b6c83147955a53acec67b5e209bf04457a13aa86789e70380d556776e
+deleted: sha256:e73706d326eb2f0431a7acf584ec8dee23aa7b46ddfa780f92404b7e9732245c
+deleted: sha256:9b908651434aba94c3398e70fffb26c02f02a9c6939bcdce90f7a83cba6d0a0c
+deleted: sha256:5f2bd0b7d385875d719d429106d96fabb6531cfbcfdcbdc4eb739d34c1c1e4aa
+deleted: sha256:97216803ae79646e0932ab7aec83e1c049e4d43249b922ec8d274198befc8ebe
+deleted: sha256:61952ea9a84ada5fc8dbe411b184957791696ab19bf368a98e6d50af657cb01f
+deleted: sha256:bd41223928a919dbc6653b0a37bb846a575df7f7565d232af06681bfba833bac
+deleted: sha256:c8ee5a288ce3b5ed3d8b69679719f502d560c405c72f3b2b6a3ea49f7477c674
+deleted: sha256:2b50b7a9fb31b5ab33f60662ef918b125fbcbb9e044271809c5c2cf57d39b048
+deleted: sha256:eab47ab50ba0b21fd7be1c06557a06660720359c5f4fd6cda314831aeb4f6856
+deleted: sha256:0c8b8577b3738402b683059c68fd074135c0c95bd41cb31ea13fdc253cb2a370
+deleted: sha256:f80a3daec74cbf53b275bf0f46a3dd48fb07ba67b91a7feee7b6acd69f58ecf4
+deleted: sha256:00ee3b5bee099bddd0df470774c83d5a2c0afd2fdc8c96bf2c032697becbec31
+deleted: sha256:8c6c195cf9e43d626ce3ada8dc19e392839bca6e1fa7b6c85e448021779fb1dc
+deleted: sha256:9054bed4610c4b86baa7062a05dab8c704cd0aaf90a971ffc908eefbcc97201f
+deleted: sha256:b0a611a65d4c86eab48509a6f92cc59898cb30d6884b5a96d9ba90f4285bc18f
+deleted: sha256:0555860132cb75949b2b677e60cec0cd3c2834984f7cf2f713b7d295be979804
+deleted: sha256:534a31df806c7f5b5c8cb42867ba7101a5a3a938934b1ced3108632f27bbc83c
+deleted: sha256:9b1e54467b57e620f04856dd4b95297c420e8e44e179f57c30cd7072085f799b
+deleted: sha256:a15daea7bbd291660f9ed2cb1889866d55ffc1ec082f587d155f062918df6a53
+deleted: sha256:1ed8ca469381dfe295f0252716e41562ee09d8dd4a4e2f22ce6d0f0525015c0e
+deleted: sha256:5218b5a0e7085499af619de469c7056dae53b90ddc83dfca4b9efe054a727f4f
+deleted: sha256:1ce0079eb9a163745368d960d159817ea2ee72755f3a29510cc6d496acef6b4b
+deleted: sha256:440043d2863d2d98ad6b9518241a754fb8272259ad939156b690b4be34c54bee
+deleted: sha256:e1128717dfe4bc330b6c5d088298debeb58535b8fb930d097514673757ae582b
+deleted: sha256:08fddcc783e9718148c73050df30048566a7ba36eff10d21f04130d171466185
+deleted: sha256:905cbe7a3e71e3222a5ac3af5e5c7d9337977c1de6475664d59d4538cf5f5fa6
+deleted: sha256:cdb4ee432e282bfa8f0933e8d320a1f6c995031d9952f496f884bfeb005596ef
+deleted: sha256:e7213999d96724f9acc54868070b5623f90a2bcaf4b5e02be2bdcc3dac656d93
+deleted: sha256:0be801f2050a79b5973f2b12ccba65fb822915305237c2ac139e83897a714838
+deleted: sha256:d1d885e95b60748b3644e70a022846a5cd42ae7a9d81153ae999f181c4deeb68
+deleted: sha256:c137e40b9b1cd03d6e973a5f9d449692397ba4f35b3e60dd70fb462e50b652f9
+deleted: sha256:0d02f86862756c799f7f63c8fb3d1442ef44d7d4217b59dd8e51d089792682f0
+deleted: sha256:95d9af9e9a70c3dc71a7e76351cdfcfa29bddd2a2f5ccdc5cfb66bf6f94c182a
+deleted: sha256:2e5e928c4a2affb50847eba6583396ad00439a5c64c0a4218fb6b18321bb1f93
+deleted: sha256:ab2d03fb7126cad8aa654ed0c3b7cde0656aa78cfa307f72ce788619a01b7b85
+deleted: sha256:dc841fbd6770844714b091cc75b3b1edcb0ef968e94af782650107679d64db5d
+deleted: sha256:068a31758df418569c8c7fb13aae3da4bde568c202dadef3fccff900990e89cf
+deleted: sha256:b401e5f003d54c9e7a8ce224cd4a142f287dccc68f8d1c5db4fa98ebce9fa3f0
+deleted: sha256:206cb4037ddbff214ace9a415d8d77a94fe7b70670099f7b3cd19e406b76f8b5
+deleted: sha256:17f10cd0a74f1f58c01c492a2cde610289338a0a014a1aa385547c10994987c3
+deleted: sha256:522f59d725cda1df09a7407f6744f2ebad0753f951ea9b00da9a4e231d8d9959
+deleted: sha256:78533123cde8ef4d13640ebb683c26a4cb2b544b4201a3ce30b3bc814de6a29a
+deleted: sha256:d406013a7604e91f953e6eb2ca1baef694f719f3c0a2d1a1576f9322f3b623f9
+deleted: sha256:d40b6a3b5c2092c0400885600dc1232e654922933268a12a4ed717d054b1fab2
+deleted: sha256:f6b676b763e90007a107e8e148024be9b1cd2b7a6c85ef99d4a79c0832bd6d0a
+deleted: sha256:7fb463fc6ce5a8174d24985be4e0dcf93fecb35bf2091c2d6bffdfc7cb12b399
+deleted: sha256:9b04658a7255e23cb7411521cf600446acfb0a42417940cdbe9cbb24ca874cdb
+deleted: sha256:78f4282d48415fb28f601014108e5e331a45390f0c6847e9e8bdce1e80966314
+deleted: sha256:5632e0c413a634fc81848914ed703335b3ad2e44fb4d2fbed07959f44dc76439
+deleted: sha256:9d295729368b0626cf847ba02c85ee952bc07d5596f65db56895dbb1e9e95eaa
+deleted: sha256:3eb0a50803f54f29b2959b404bd474a57502f11315a0614421d65eb3fc7604a5
+deleted: sha256:8b850464532300c20ef2623b1f7030fcc0dac812b7c5ce651a7ed926d00a499d
+deleted: sha256:5d83ae099493d091ac8a0185b1b532ebd49477c1111c1f06c6f4d41e3ee2717a
+deleted: sha256:b86585bb9ffbd26ede78a1cc688b7341f8c5e4cf8cc035e5257b31961875d327
+deleted: sha256:283ede038468b5658e280c87b1c5c90fbfb9f5a1891602164d7d0dbab055bf17
+deleted: sha256:0445c7ed0346fcfc9c56b8bf1f4dd629cb6fa3974d92c0830aa39aedff0b229a
+
+Total reclaimed space: 0B
+Conteneurs : Total reclaimed space: 0B
+
+── Conteneurs actifs ──────────────────
+jobassistant-backend — Up 3 hours
+jobassistant-frontend — Up 7 hours
+doctracker-backend — Up 6 days
+debian-n8n-1 — Up 4 days
+doctracker-frontend — Up 8 days
+chunker-service — Up 9 days
+busy_chaplygin — Up 9 days
+xenodochial_hugle — Up 9 days
+goofy_poincare — Up 9 days
+debian-traefik-1 — Up 11 days
+ged-v2-frontend — Up 11 days
+ged-v2-backend — Up 10 days
+chatbot-v2-backend — Up 10 days
+chatbot-v2-frontend — Up 11 days
+frontend — Up 11 days
+superset-backend — Up 11 days
+adminia-backend — Up 11 days
+adminia-frontend — Up 11 days
+adminia-landing — Up 11 days
+fete-voisins-backend — Up 9 days
+fete-voisins-frontend — Up 9 days
+fete-voisins-db — Up 9 days (healthy)
+superset — Up 11 days (healthy)
+superset-db — Up 11 days (healthy)
+tooltip-api — Up 11 days
+superset-cache — Up 11 days (healthy)
+chatbot-3f-yvelines — Up 11 days
+doctracker-saas-frontend — Up 11 days
+doctracker-saas-backend — Up 11 days
+doctracker-saas-db — Up 11 days (healthy)
+superset_app — Up 1 second (health: starting)
+superset_cache — Up 11 days
+debian-postgres-1 — Up 11 days (healthy)
+debian-mysql-1 — Up 11 days (healthy)
+
+── Mises à jour sécurité ──────────────
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages were automatically installed and are no longer required:
+  libltdl7 libslirp0 slirp4netns
+Use 'sudo apt autoremove' to remove them.
+The following packages will be upgraded:
+  containerd.io docker-ce docker-ce-cli docker-ce-rootless-extras
+4 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 73.9 MB of archives.
+After this operation, 1990 kB of additional disk space will be used.
+Get:1 https://download.docker.com/linux/debian bookworm/stable amd64 docker-ce-cli amd64 5:29.6.0-1~debian.12~bookworm [16.9 MB]
+Get:2 https://download.docker.com/linux/debian bookworm/stable amd64 containerd.io amd64 2.2.5-1~debian.12~bookworm [23.6 MB]
+Get:3 https://download.docker.com/linux/debian bookworm/stable amd64 docker-ce amd64 5:29.6.0-1~debian.12~bookworm [23.3 MB]
+Get:4 https://download.docker.com/linux/debian bookworm/stable amd64 docker-ce-rootless-extras amd64 5:29.6.0-1~debian.12~bookworm [10.2 MB]
+apt-listchanges: Reading changelogs...
+Fetched 73.9 MB in 2s (45.8 MB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 96089 files and directories currently installed.)
+Preparing to unpack .../docker-ce-cli_5%3a29.6.0-1~debian.12~bookworm_amd64.deb ...
+Unpacking docker-ce-cli (5:29.6.0-1~debian.12~bookworm) over (5:29.5.3-1~debian.12~bookworm) ...
+Preparing to unpack .../containerd.io_2.2.5-1~debian.12~bookworm_amd64.deb ...
+Unpacking containerd.io (2.2.5-1~debian.12~bookworm) over (2.2.4-1~debian.12~bookworm) ...
+Preparing to unpack .../docker-ce_5%3a29.6.0-1~debian.12~bookworm_amd64.deb ...
+Unpacking docker-ce (5:29.6.0-1~debian.12~bookworm) over (5:29.5.3-1~debian.12~bookworm) ...
+Preparing to unpack .../docker-ce-rootless-extras_5%3a29.6.0-1~debian.12~bookworm_amd64.deb ...
+Unpacking docker-ce-rootless-extras (5:29.6.0-1~debian.12~bookworm) over (5:29.5.3-1~debian.12~bookworm) ...
+Setting up containerd.io (2.2.5-1~debian.12~bookworm) ...
+Setting up docker-ce-cli (5:29.6.0-1~debian.12~bookworm) ...
+Setting up docker-ce-rootless-extras (5:29.6.0-1~debian.12~bookworm) ...
+Setting up docker-ce (5:29.6.0-1~debian.12~bookworm) ...
+Processing triggers for man-db (2.11.2-2) ...
+
+══════════════════════════════════════

@@ -67,3 +67,39 @@
     - name: "11. Afficher statut JobAssistant"
       debug:
         msg: "JobAssistant backend: {{ ja_health.stdout | default('Non disponible') }}"
+    - name: "12. Récupérer l'IP actuelle de superset-db (utilisée par JobAssistant)"
+      tags: [jobassistant, postgres, ip, reboot]
+      shell: docker inspect superset-db --format '{{"{{"}}(index .NetworkSettings.Networks "jobassistant_jobassistant-internal").IPAddress{{"}}"}}' 2>/dev/null || docker inspect superset-db --format '{{"{{"}}range .NetworkSettings.Networks{{"}}"}}{{"{{"}}.IPAddress{{"}}"}} {{"{{"}}end{{"}}"}}' | awk '{print $1}'
+      register: superset_db_ip
+    - name: "13. Afficher l'IP superset-db trouvée"
+      debug:
+        msg: "IP superset-db actuelle : {{ superset_db_ip.stdout }}"
+    - name: "14. Corriger l'IP superset-db dans les fichiers JS de JobAssistant"
+      tags: [jobassistant, postgres, correction]
+      replace:
+        path: "{{ item }}"
+        regexp: "host: '172\\.\\d+\\.\\d+\\.\\d+'"
+        replace: "host: '{{ superset_db_ip.stdout | trim }}'"
+      loop:
+        - /opt/jobassistant/backend/server.js
+        - /opt/jobassistant/backend/collector.js
+        - /opt/jobassistant/backend/collector_ft_massive.js
+        - /opt/jobassistant/backend/collector_ft_dynamic.js
+        - /opt/jobassistant/backend/collector_indeed.js
+      ignore_errors: yes
+      register: js_fix_result
+    - name: "15. Rebuild jobassistant-backend si correction appliquee"
+      tags: [jobassistant, docker, restart]
+      shell: cd /opt/jobassistant && docker compose up -d --build jobassistant-backend
+      when: js_fix_result.changed
+      ignore_errors: yes
+    - name: "16. Verifier sante JobAssistant apres correction superset-db"
+      tags: [jobassistant, health]
+      shell: sleep 10 && docker exec jobassistant-backend wget -qO- http://localhost:4003/api/jobs?limit=5 2>/dev/null | head -c 200
+      register: ja_jobs_check
+      ignore_errors: yes
+    - name: "17. Resume final superset-db"
+      debug:
+        msg: |
+          IP superset-db utilisee : {{ superset_db_ip.stdout }}
+          Test endpoint /api/jobs : {{ ja_jobs_check.stdout | default('Echec') }}
