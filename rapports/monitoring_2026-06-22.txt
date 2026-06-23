@@ -3,7 +3,7 @@ RAPPORT MONITORING — GED-v2 v1.0
 ═══════════════════════════════════════════════
 Auteur  : Mohamed Assalia Maiga
 Date    : 2026-06-22
-Heure   : 02:00:04
+Heure   : 23:00:03
 Serveur : vps-659fea22 (51.77.192.239)
 OS      : Debian 12.14
 RAM     : 7763 MB total
@@ -15,39 +15,39 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 ── MÉMOIRE ─────────────────────────────────────
                total        used        free      shared  buff/cache   available
-Mem:            7763        2942         192          68        4995        4821
+Mem:            7763        4166        1778          70        2185        3596
 Swap:              0           0           0
 
 ── CONTENEURS DOCKER ───────────────────────────
-NAMES                      STATUS                            PORTS
-jobassistant-backend       Up 15 hours                       4003/tcp
-jobassistant-frontend      Up 23 hours                       80/tcp
-doctracker-backend         Up 23 hours                       0.0.0.0:4000->4000/tcp, [::]:4000->4000/tcp
-debian-n8n-1               Up 23 hours                       5678/tcp
-doctracker-frontend        Up 23 hours                       0.0.0.0:3002->80/tcp, [::]:3002->80/tcp
-chunker-service            Up 23 hours                       
-debian-traefik-1           Up 23 hours                       0.0.0.0:80->80/tcp, [::]:80->80/tcp, 0.0.0.0:443->443/tcp, [::]:443->443/tcp, 0.0.0.0:4001->4001/tcp, [::]:4001->4001/tcp
-ged-v2-frontend            Up 23 hours                       80/tcp
-ged-v2-backend             Up 23 hours                       
-chatbot-v2-backend         Up 23 hours                       
-chatbot-v2-frontend        Up 23 hours                       80/tcp
-frontend                   Up 23 hours                       80/tcp
-superset-backend           Up 23 hours                       3000/tcp
-adminia-backend            Up 23 hours                       4002/tcp
-adminia-frontend           Up 23 hours                       80/tcp
-adminia-landing            Up 15 hours                       80/tcp
-superset                   Up 23 hours (healthy)             0.0.0.0:8090->8088/tcp, [::]:8090->8088/tcp
-superset-db                Up 23 hours (healthy)             5432/tcp
-tooltip-api                Up 23 hours                       0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp
-superset-cache             Up 23 hours (healthy)             6379/tcp
-chatbot-3f-yvelines        Up 23 hours                       80/tcp
-doctracker-saas-frontend   Up 23 hours                       80/tcp
-doctracker-saas-backend    Up 23 hours                       4000/tcp
-doctracker-saas-db         Up 23 hours (healthy)             5432/tcp
-superset_app               Up 9 seconds (health: starting)   0.0.0.0:8081->8081/tcp, [::]:8081->8081/tcp, 0.0.0.0:8088->8088/tcp, [::]:8088->8088/tcp
-superset_cache             Up 23 hours                       127.0.0.1:6379->6379/tcp
-debian-postgres-1          Up 23 hours (healthy)             0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp
-debian-mysql-1             Up 23 hours (healthy)             3306/tcp, 33060/tcp
+NAMES                      STATUS                             PORTS
+jobassistant-frontend      Up 16 minutes                      80/tcp
+jobassistant-backend       Up 36 hours                        4003/tcp
+doctracker-backend         Up 44 hours                        0.0.0.0:4000->4000/tcp, [::]:4000->4000/tcp
+debian-n8n-1               Up 44 hours                        5678/tcp
+doctracker-frontend        Up 44 hours                        0.0.0.0:3002->80/tcp, [::]:3002->80/tcp
+chunker-service            Up 44 hours                        
+debian-traefik-1           Up 44 hours                        0.0.0.0:80->80/tcp, [::]:80->80/tcp, 0.0.0.0:443->443/tcp, [::]:443->443/tcp, 0.0.0.0:4001->4001/tcp, [::]:4001->4001/tcp
+ged-v2-frontend            Up 44 hours                        80/tcp
+ged-v2-backend             Up 44 hours                        
+chatbot-v2-backend         Up 44 hours                        
+chatbot-v2-frontend        Up 44 hours                        80/tcp
+frontend                   Up 44 hours                        80/tcp
+superset-backend           Up 44 hours                        3000/tcp
+adminia-backend            Up 44 hours                        4002/tcp
+adminia-frontend           Up 44 hours                        80/tcp
+adminia-landing            Up 36 hours                        80/tcp
+superset                   Up 44 hours (healthy)              0.0.0.0:8090->8088/tcp, [::]:8090->8088/tcp
+superset-db                Up 44 hours (healthy)              5432/tcp
+tooltip-api                Up 44 hours                        0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp
+superset-cache             Up 44 hours (healthy)              6379/tcp
+chatbot-3f-yvelines        Up 44 hours                        80/tcp
+doctracker-saas-frontend   Up 44 hours                        80/tcp
+doctracker-saas-backend    Up 44 hours                        4000/tcp
+doctracker-saas-db         Up 44 hours (healthy)              5432/tcp
+superset_app               Up 16 seconds (health: starting)   0.0.0.0:8081->8081/tcp, [::]:8081->8081/tcp, 0.0.0.0:8088->8088/tcp, [::]:8088->8088/tcp
+superset_cache             Up 44 hours                        127.0.0.1:6379->6379/tcp
+debian-postgres-1          Up 44 hours (healthy)              0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp
+debian-mysql-1             Up 44 hours (healthy)              3306/tcp, 33060/tcp
 
 ── DOSSIERS PROJETS ────────────────────────────
 ✅ /opt/ged-v2
