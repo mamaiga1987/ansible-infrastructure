@@ -2,8 +2,8 @@
 RAPPORT MONITORING — GED-v2 v1.0
 ═══════════════════════════════════════════════
 Auteur  : Mohamed Assalia Maiga
-Date    : 2026-07-03
-Heure   : 23:00:02
+Date    : 2026-07-04
+Heure   : 02:00:04
 Serveur : vps-659fea22 (51.77.192.239)
 OS      : Debian 12.14
 RAM     : 7763 MB total
@@ -15,14 +15,14 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 ── MÉMOIRE ─────────────────────────────────────
                total        used        free      shared  buff/cache   available
-Mem:            7763        3490         646         120        4047        4272
+Mem:            7763        3478         604         120        4098        4284
 Swap:              0           0           0
 
 ── CONTENEURS DOCKER ───────────────────────────
 NAMES                      STATUS                          PORTS
-jobassistant-backend       Up 27 hours                     4003/tcp
-jobassistant-frontend      Up 2 days                       80/tcp
-doctracker-backend         Up 3 days                       0.0.0.0:4000->4000/tcp, [::]:4000->4000/tcp
+jobassistant-backend       Up 30 hours                     4003/tcp
+jobassistant-frontend      Up 3 days                       80/tcp
+doctracker-backend         Up 4 days                       0.0.0.0:4000->4000/tcp, [::]:4000->4000/tcp
 ged-v2-backend             Up 4 days                       
 ged-v2-frontend            Up 5 days                       80/tcp
 debian-n8n-1               Up 5 days                       5678/tcp
@@ -43,7 +43,7 @@ chatbot-3f-yvelines        Up 5 days                       80/tcp
 doctracker-saas-frontend   Up 5 days                       80/tcp
 doctracker-saas-backend    Up 5 days                       4000/tcp
 doctracker-saas-db         Up 5 days (healthy)             5432/tcp
-superset_app               Restarting (1) 40 seconds ago   
+superset_app               Restarting (1) 36 seconds ago   
 superset_cache             Up 5 days                       127.0.0.1:6379->6379/tcp
 debian-postgres-1          Up 5 days (healthy)             0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp
 debian-mysql-1             Up 5 days (healthy)             3306/tcp, 33060/tcp
