@@ -1,0 +1,68 @@
+═══════════════════════════════════════════════
+RAPPORT MONITORING — GED-v2 v1.0
+═══════════════════════════════════════════════
+Auteur  : Mohamed Assalia Maiga
+Date    : 2026-07-06
+Heure   : 02:00:05
+Serveur : vps-659fea22 (51.77.192.239)
+OS      : Debian 12.14
+RAM     : 7763 MB total
+CPUs    : 4
+
+── DISQUE ──────────────────────────────────────
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda1        74G   44G   27G  63% /
+
+── MÉMOIRE ─────────────────────────────────────
+               total        used        free      shared  buff/cache   available
+Mem:            7763        4740        1284         151        2186        3022
+Swap:              0           0           0
+
+── CONTENEURS DOCKER ───────────────────────────
+NAMES                      STATUS                             PORTS
+superset-worker            Up 21 hours (unhealthy)            8088/tcp
+superset-worker-beat       Up 21 hours (unhealthy)            8088/tcp
+superset_worker_beat       Up 1 second                        8088/tcp
+superset_worker            Up 12 seconds (health: starting)   8088/tcp
+jobassistant-backend       Up 3 days                          4003/tcp
+jobassistant-frontend      Up 5 days                          80/tcp
+doctracker-backend         Up 6 days                          0.0.0.0:4000->4000/tcp, [::]:4000->4000/tcp
+ged-v2-backend             Up 6 days                          
+ged-v2-frontend            Up 7 days                          80/tcp
+debian-n8n-1               Up 7 days                          5678/tcp
+doctracker-frontend        Up 7 days                          0.0.0.0:3002->80/tcp, [::]:3002->80/tcp
+chunker-service            Up 7 days                          
+debian-traefik-1           Up 7 days                          0.0.0.0:80->80/tcp, [::]:80->80/tcp, 0.0.0.0:443->443/tcp, [::]:443->443/tcp, 0.0.0.0:4001->4001/tcp, [::]:4001->4001/tcp
+chatbot-v2-backend         Up 7 days                          
+chatbot-v2-frontend        Up 7 days                          80/tcp
+frontend                   Up 7 days                          80/tcp
+superset-backend           Up 7 days                          3000/tcp
+adminia-backend            Up 7 days                          4002/tcp
+adminia-frontend           Up 7 days                          80/tcp
+superset                   Up 7 days (healthy)                0.0.0.0:8090->8088/tcp, [::]:8090->8088/tcp
+superset-db                Up 7 days (healthy)                5432/tcp
+tooltip-api                Up 7 days                          0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp
+superset-cache             Up 7 days (healthy)                6379/tcp
+chatbot-3f-yvelines        Up 7 days                          80/tcp
+doctracker-saas-frontend   Up 7 days                          80/tcp
+doctracker-saas-backend    Up 7 days                          4000/tcp
+doctracker-saas-db         Up 7 days (healthy)                5432/tcp
+superset_app               Up 1 second (health: starting)     0.0.0.0:8081->8081/tcp, [::]:8081->8081/tcp, 0.0.0.0:8088->8088/tcp, [::]:8088->8088/tcp
+superset_cache             Up 7 days                          127.0.0.1:6379->6379/tcp
+debian-postgres-1          Up 7 days (healthy)                0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp
+debian-mysql-1             Up 7 days (healthy)                3306/tcp, 33060/tcp
+
+── DOSSIERS PROJETS ────────────────────────────
+✅ /opt/ged-v2
+✅ /opt/chatbot-v2
+✅ /opt/rag-langchain
+✅ /opt/rag-llamaindex
+✅ /opt/agent-langgraph
+✅ /opt/ged-llamaindex
+
+── SERVICES & PORTS ────────────────────────────
+✅ ged-v2-frontend (port 80) — CRITIQUE
+❌ ged-v2-backend (port 8767) — CRITIQUE
+❌ chatbot-v2-backend (port 8766) 
+
+═══════════════════════════════════════════════
