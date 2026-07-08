@@ -2,8 +2,8 @@
 RAPPORT MONITORING — GED-v2 v1.0
 ═══════════════════════════════════════════════
 Auteur  : Mohamed Assalia Maiga
-Date    : 2026-07-07
-Heure   : 23:00:03
+Date    : 2026-07-08
+Heure   : 02:00:03
 Serveur : vps-659fea22 (51.77.192.239)
 OS      : Debian 12.14
 RAM     : 7763 MB total
@@ -15,18 +15,18 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 ── MÉMOIRE ─────────────────────────────────────
                total        used        free      shared  buff/cache   available
-Mem:            7763        5010         465         154        2738        2752
+Mem:            7763        5152         379         154        2682        2610
 Swap:              0           0           0
 
 ── CONTENEURS DOCKER ───────────────────────────
 NAMES                      STATUS                             PORTS
 superset-worker            Up 2 days (unhealthy)              8088/tcp
 superset-worker-beat       Up 2 days (unhealthy)              8088/tcp
-superset_worker_beat       Up 6 seconds                       8088/tcp
-superset_worker            Up 10 seconds (health: starting)   8088/tcp
+superset_worker_beat       Up 16 seconds                      8088/tcp
+superset_worker            Up 16 seconds (health: starting)   8088/tcp
 jobassistant-backend       Up 5 days                          4003/tcp
-jobassistant-frontend      Up 6 days                          80/tcp
-doctracker-backend         Up 7 days                          0.0.0.0:4000->4000/tcp, [::]:4000->4000/tcp
+jobassistant-frontend      Up 7 days                          80/tcp
+doctracker-backend         Up 8 days                          0.0.0.0:4000->4000/tcp, [::]:4000->4000/tcp
 ged-v2-backend             Up 8 days                          
 ged-v2-frontend            Up 9 days                          80/tcp
 debian-n8n-1               Up 9 days                          5678/tcp
@@ -47,7 +47,7 @@ chatbot-3f-yvelines        Up 9 days                          80/tcp
 doctracker-saas-frontend   Up 9 days                          80/tcp
 doctracker-saas-backend    Up 9 days                          4000/tcp
 doctracker-saas-db         Up 9 days (healthy)                5432/tcp
-superset_app               Up 10 seconds (health: starting)   0.0.0.0:8081->8081/tcp, [::]:8081->8081/tcp, 0.0.0.0:8088->8088/tcp, [::]:8088->8088/tcp
+superset_app               Up 16 seconds (health: starting)   0.0.0.0:8081->8081/tcp, [::]:8081->8081/tcp, 0.0.0.0:8088->8088/tcp, [::]:8088->8088/tcp
 superset_cache             Up 9 days                          127.0.0.1:6379->6379/tcp
 debian-postgres-1          Up 9 days (healthy)                0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp
 debian-mysql-1             Up 9 days (healthy)                3306/tcp, 33060/tcp
