@@ -2,8 +2,8 @@
 RAPPORT MONITORING — GED-v2 v1.0
 ═══════════════════════════════════════════════
 Auteur  : Mohamed Assalia Maiga
-Date    : 2026-07-12
-Heure   : 23:00:03
+Date    : 2026-07-13
+Heure   : 02:00:03
 Serveur : vps-659fea22 (51.77.192.239)
 OS      : Debian 12.15
 RAM     : 7763 MB total
@@ -15,15 +15,15 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 ── MÉMOIRE ─────────────────────────────────────
                total        used        free      shared  buff/cache   available
-Mem:            7763        3639         511         184        4094        4123
+Mem:            7763        3657         452         184        4134        4105
 Swap:              0           0           0
 
 ── CONTENEURS DOCKER ───────────────────────────
 NAMES                      STATUS                           PORTS
-superset-backend           Up 27 hours                      3000/tcp
+superset-backend           Up 30 hours                      3000/tcp
 jobassistant-backend       Up 4 days                        4003/tcp
 superset-worker            Up 4 days (unhealthy)            8088/tcp
-superset-worker-beat       Restarting (73) 15 seconds ago   
+superset-worker-beat       Restarting (73) 55 seconds ago   
 jobassistant-frontend      Up 4 days                        80/tcp
 doctracker-backend         Up 4 days                        0.0.0.0:4000->4000/tcp, [::]:4000->4000/tcp
 ged-v2-backend             Up 4 days                        
@@ -37,7 +37,7 @@ chatbot-v2-frontend        Up 4 days                        80/tcp
 frontend                   Up 4 days                        80/tcp
 adminia-backend            Up 4 days                        4002/tcp
 adminia-frontend           Up 4 days                        80/tcp
-superset                   Up 41 hours (healthy)            0.0.0.0:8090->8088/tcp, [::]:8090->8088/tcp
+superset                   Up 44 hours (healthy)            0.0.0.0:8090->8088/tcp, [::]:8090->8088/tcp
 superset-db                Up 4 days (healthy)              5432/tcp
 tooltip-api                Up 4 days                        0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp
 superset-cache             Up 4 days (healthy)              6379/tcp
