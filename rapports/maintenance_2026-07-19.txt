@@ -1,0 +1,74 @@
+══════════════════════════════════════
+RAPPORT MAINTENANCE — 2026-07-19
+══════════════════════════════════════
+Serveur    : vps-659fea22
+Date       : 2026-07-19 03:00:03
+
+── Santé Système ──────────────────────
+Disque     : 64% utilisé ✅ OK
+Reboot     : ⚠️ REQUIS
+
+── Nettoyage Docker ───────────────────
+Images     : Total reclaimed space: 0B
+Conteneurs : Total reclaimed space: 0B
+
+── Conteneurs actifs ──────────────────
+superset-backend — Up 7 days
+jobassistant-backend — Up 10 days
+superset-worker — Up 10 days (unhealthy)
+superset-worker-beat — Up 9 seconds (health: starting)
+jobassistant-frontend — Up 10 days
+doctracker-backend — Up 10 days
+ged-v2-backend — Up 10 days
+ged-v2-frontend — Up 10 days
+debian-n8n-1 — Up 10 days
+doctracker-frontend — Up 10 days
+chunker-service — Up 10 days
+debian-traefik-1 — Up 10 days
+chatbot-v2-backend — Up 10 days
+chatbot-v2-frontend — Up 10 days
+frontend — Up 10 days
+adminia-backend — Up 10 days
+adminia-frontend — Up 10 days
+superset — Up 7 days (healthy)
+superset-db — Up 10 days (healthy)
+tooltip-api — Up 10 days
+superset-cache — Up 10 days (healthy)
+chatbot-3f-yvelines — Up 10 days
+doctracker-saas-frontend — Up 10 days
+doctracker-saas-backend — Up 10 days
+doctracker-saas-db — Up 10 days (healthy)
+debian-postgres-1 — Up 10 days (healthy)
+debian-mysql-1 — Up 10 days (healthy)
+
+── Mises à jour sécurité ──────────────
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages were automatically installed and are no longer required:
+  libltdl7 libslirp0 slirp4netns
+Use 'sudo apt autoremove' to remove them.
+The following packages will be upgraded:
+  docker-ce docker-ce-cli docker-ce-rootless-extras
+3 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 50.3 MB of archives.
+After this operation, 18.4 kB of additional disk space will be used.
+Get:1 https://download.docker.com/linux/debian bookworm/stable amd64 docker-ce-cli amd64 5:29.6.2-1~debian.12~bookworm [16.9 MB]
+Get:2 https://download.docker.com/linux/debian bookworm/stable amd64 docker-ce amd64 5:29.6.2-1~debian.12~bookworm [23.3 MB]
+Get:3 https://download.docker.com/linux/debian bookworm/stable amd64 docker-ce-rootless-extras amd64 5:29.6.2-1~debian.12~bookworm [10.2 MB]
+apt-listchanges: Reading changelogs...
+Fetched 50.3 MB in 1s (40.4 MB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 96124 files and directories currently installed.)
+Preparing to unpack .../docker-ce-cli_5%3a29.6.2-1~debian.12~bookworm_amd64.deb ...
+Unpacking docker-ce-cli (5:29.6.2-1~debian.12~bookworm) over (5:29.6.1-1~debian.12~bookworm) ...
+Preparing to unpack .../docker-ce_5%3a29.6.2-1~debian.12~bookworm_amd64.deb ...
+Unpacking docker-ce (5:29.6.2-1~debian.12~bookworm) over (5:29.6.1-1~debian.12~bookworm) ...
+Preparing to unpack .../docker-ce-rootless-extras_5%3a29.6.2-1~debian.12~bookworm_amd64.deb ...
+Unpacking docker-ce-rootless-extras (5:29.6.2-1~debian.12~bookworm) over (5:29.6.1-1~debian.12~bookworm) ...
+Setting up docker-ce-cli (5:29.6.2-1~debian.12~bookworm) ...
+Setting up docker-ce-rootless-extras (5:29.6.2-1~debian.12~bookworm) ...
+Setting up docker-ce (5:29.6.2-1~debian.12~bookworm) ...
+Processing triggers for man-db (2.11.2-2) ...
+
+══════════════════════════════════════
