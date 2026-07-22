@@ -2,8 +2,8 @@
 RAPPORT MONITORING — GED-v2 v1.0
 ═══════════════════════════════════════════════
 Auteur  : Mohamed Assalia Maiga
-Date    : 2026-07-21
-Heure   : 23:00:02
+Date    : 2026-07-22
+Heure   : 02:00:05
 Serveur : vps-659fea22 (51.77.192.239)
 OS      : Debian 12.15
 RAM     : 7763 MB total
@@ -15,18 +15,18 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 ── MÉMOIRE ─────────────────────────────────────
                total        used        free      shared  buff/cache   available
-Mem:            7763        3790         554         127        3957        3972
+Mem:            7763        3669         540         127        3978        4094
 Swap:              0           0           0
 
 ── CONTENEURS DOCKER ───────────────────────────
 NAMES                      STATUS                           PORTS
-superset-backend           Up 31 hours                      3000/tcp
-frontend                   Up 31 hours                      80/tcp
-chatbot-v2-backend         Up 32 hours                      
-chatbot-v2-frontend        Up 32 hours                      80/tcp
-jobassistant-backend       Up 34 hours                      4003/tcp
+superset-backend           Up 34 hours                      3000/tcp
+frontend                   Up 34 hours                      80/tcp
+chatbot-v2-backend         Up 35 hours                      
+chatbot-v2-frontend        Up 35 hours                      80/tcp
+jobassistant-backend       Up 37 hours                      4003/tcp
 superset-worker            Up 2 days (unhealthy)            8088/tcp
-superset-worker-beat       Restarting (73) 42 seconds ago   
+superset-worker-beat       Restarting (73) 38 seconds ago   
 jobassistant-frontend      Up 2 days                        80/tcp
 doctracker-backend         Up 2 days                        0.0.0.0:4000->4000/tcp, [::]:4000->4000/tcp
 ged-v2-backend             Up 2 days                        
