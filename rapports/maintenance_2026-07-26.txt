@@ -1,0 +1,64 @@
+══════════════════════════════════════
+RAPPORT MAINTENANCE — 2026-07-26
+══════════════════════════════════════
+Serveur    : vps-659fea22
+Date       : 2026-07-26 03:00:07
+
+── Santé Système ──────────────────────
+Disque     : 64% utilisé ✅ OK
+Reboot     : ⚠️ REQUIS
+
+── Nettoyage Docker ───────────────────
+Images     : Deleted Images:
+deleted: sha256:f3c71d476a026f12e59a5cc56e0e315ba170fa32220b76bb617a631ef84934e2
+deleted: sha256:444ebe82aaec9136213d3b98f87046fe82fc015edc0db3bf830554844d115759
+deleted: sha256:d3f9e23200875f11a99c4b8f0f41b4825244e95aeb2d7673c5e871130d95c83d
+deleted: sha256:06dd0e8c8a14927f9a54c09e5b81c11ac856c1badaa763dbc44b6a8cba924235
+deleted: sha256:f7ab7d31e0e746d65aea553c1fdc47686b6b245ac7d22a5ba184f2f0758aedd6
+deleted: sha256:3840933c87c11d0685a9ca635dc5777d4d56fda0a65f320168592379cd719495
+
+Total reclaimed space: 77.85MB
+Conteneurs : Total reclaimed space: 0B
+
+── Conteneurs actifs ──────────────────
+cube — Up 5 minutes
+cubestore — Up 5 minutes
+superset-worker-beat — Up 2 days (unhealthy)
+superset-backend — Up 5 days
+frontend — Up 5 days
+chatbot-v2-backend — Up 5 days
+chatbot-v2-frontend — Up 5 days
+jobassistant-backend — Up 5 days
+superset-worker — Up 7 hours (unhealthy)
+jobassistant-frontend — Up 7 days
+doctracker-backend — Up 7 days
+ged-v2-backend — Up 7 days
+ged-v2-frontend — Up 7 days
+debian-n8n-1 — Up 7 days
+doctracker-frontend — Up 7 days
+chunker-service — Up 7 days
+debian-traefik-1 — Up 7 days
+adminia-backend — Up 7 days
+adminia-frontend — Up 7 days
+superset — Up 7 hours (healthy)
+superset-db — Up 7 days (healthy)
+tooltip-api — Up 7 days
+superset-cache — Up 7 days (healthy)
+chatbot-3f-yvelines — Up 7 days
+doctracker-saas-frontend — Up 7 days
+doctracker-saas-backend — Up 7 days
+doctracker-saas-db — Up 7 days (healthy)
+debian-postgres-1 — Up 7 days (healthy)
+debian-mysql-1 — Up 7 days (healthy)
+
+── Mises à jour sécurité ──────────────
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages were automatically installed and are no longer required:
+  libltdl7 libslirp0 slirp4netns
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+══════════════════════════════════════
