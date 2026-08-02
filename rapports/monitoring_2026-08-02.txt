@@ -2,8 +2,8 @@
 RAPPORT MONITORING — GED-v2 v1.0
 ═══════════════════════════════════════════════
 Auteur  : Mohamed Assalia Maiga
-Date    : 2026-08-01
-Heure   : 23:00:04
+Date    : 2026-08-02
+Heure   : 02:00:04
 Serveur : vps-659fea22 (51.77.192.239)
 OS      : Debian 12.15
 RAM     : 7763 MB total
@@ -15,13 +15,13 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 ── MÉMOIRE ─────────────────────────────────────
                total        used        free      shared  buff/cache   available
-Mem:            7763        4747        1138         250        2424        3015
+Mem:            7763        4753        1105         250        2452        3010
 Swap:              0           0           0
 
 ── CONTENEURS DOCKER ───────────────────────────
 NAMES                      STATUS                  PORTS
-cube                       Up 33 hours             4000/tcp, 0.0.0.0:15432->15432/tcp, [::]:15432->15432/tcp
-cubestore                  Up 33 hours             3306/tcp
+cube                       Up 36 hours             4000/tcp, 0.0.0.0:15432->15432/tcp, [::]:15432->15432/tcp
+cubestore                  Up 36 hours             3306/tcp
 superset-worker            Up 6 days (unhealthy)   8088/tcp
 superset-worker-beat       Up 6 days (unhealthy)   8088/tcp
 superset-backend           Up 12 days              3000/tcp
@@ -39,7 +39,7 @@ chunker-service            Up 13 days
 debian-traefik-1           Up 13 days              0.0.0.0:80->80/tcp, [::]:80->80/tcp, 0.0.0.0:443->443/tcp, [::]:443->443/tcp, 0.0.0.0:4001->4001/tcp, [::]:4001->4001/tcp
 adminia-backend            Up 13 days              4002/tcp
 adminia-frontend           Up 13 days              80/tcp
-superset                   Up 32 hours (healthy)   0.0.0.0:8090->8088/tcp, [::]:8090->8088/tcp
+superset                   Up 35 hours (healthy)   0.0.0.0:8090->8088/tcp, [::]:8090->8088/tcp
 superset-db                Up 13 days (healthy)    5432/tcp
 tooltip-api                Up 13 days              0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp
 superset-cache             Up 13 days (healthy)    6379/tcp
