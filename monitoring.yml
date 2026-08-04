@@ -50,3 +50,21 @@
           Conteneurs actifs : {{ conteneurs.stdout_lines | length }}
           Projets dans /opt : {{ tous_dossiers.files | length }}
           Date              : {{ ansible_date_time.date }} {{ ansible_date_time.time }}
+
+# Vérification espace disque sdb1
+- name: Check espace disque /dev/sdb1
+  shell: df /dev/sdb1 | awk 'NR==2 {print $5}' | tr -d '%'
+  register: disk_usage
+  changed_when: false
+
+- name: Alerte si disque > 80%
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: mmohamedassalia6@gmail.com
+    password: myrvlepmxeyfgosu
+    to: mmohamedassalia6@gmail.com
+    subject: "⚠️ Alerte disque VPS - {{ disk_usage.stdout }}% utilisé"
+    body: "Le disque /dev/sdb1 est à {{ disk_usage.stdout }}% de capacité. Pensez à nettoyer les logs Docker."
+    secure: starttls
+  when: disk_usage.stdout | int > 80
