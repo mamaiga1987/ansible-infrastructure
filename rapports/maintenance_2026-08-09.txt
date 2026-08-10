@@ -1,0 +1,106 @@
+══════════════════════════════════════
+RAPPORT MAINTENANCE — 2026-08-09
+══════════════════════════════════════
+Serveur    : vps-659fea22
+Date       : 2026-08-09 03:00:03
+
+── Santé Système ──────────────────────
+Disque     : 65% utilisé ✅ OK
+Reboot     : ⚠️ REQUIS
+
+── Nettoyage Docker ───────────────────
+Images     : Deleted Images:
+deleted: sha256:f07162c353bc3d9c66896825baee506eeca92bd2172a487a7eeda00b315defce
+
+Total reclaimed space: 0B
+Conteneurs : Total reclaimed space: 0B
+
+── Conteneurs actifs ──────────────────
+jobassistant-backend — Up 5 days
+cube — Up 7 days
+cubestore — Up 7 days
+superset-worker — Up 7 days (unhealthy)
+superset-worker-beat — Up 7 days (unhealthy)
+superset-backend — Up 7 days
+frontend — Up 7 days
+chatbot-v2-backend — Up 7 days
+chatbot-v2-frontend — Up 7 days
+jobassistant-frontend — Up 7 days
+doctracker-backend — Up 7 days
+ged-v2-backend — Up 7 days
+ged-v2-frontend — Up 7 days
+debian-n8n-1 — Up 7 days
+doctracker-frontend — Up 7 days
+chunker-service — Up 7 days
+debian-traefik-1 — Up 7 days
+adminia-backend — Up 6 days
+adminia-frontend — Up 7 days
+superset — Up 7 days (healthy)
+superset-db — Up 7 days (healthy)
+tooltip-api — Up 7 days
+superset-cache — Up 7 days (healthy)
+chatbot-3f-yvelines — Up 7 days
+doctracker-saas-frontend — Up 7 days
+doctracker-saas-backend — Up 7 days
+doctracker-saas-db — Up 7 days (healthy)
+debian-postgres-1 — Up 7 days (healthy)
+debian-mysql-1 — Up 7 days (healthy)
+
+── Mises à jour sécurité ──────────────
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages were automatically installed and are no longer required:
+  libltdl7 libslirp0 slirp4netns
+Use 'sudo apt autoremove' to remove them.
+The following packages will be upgraded:
+  bind9-dnsutils bind9-host bind9-libs containerd.io dnsutils
+  docker-buildx-plugin docker-ce docker-ce-cli docker-ce-rootless-extras
+  docker-compose-plugin
+10 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 102 MB/103 MB of archives.
+After this operation, 11.7 MB of additional disk space will be used.
+Get:1 https://download.docker.com/linux/debian bookworm/stable amd64 docker-ce-cli amd64 5:29.7.2-1~debian.12~bookworm [17.0 MB]
+Get:2 https://download.docker.com/linux/debian bookworm/stable amd64 containerd.io amd64 2.3.3-1~debian.12~bookworm [22.7 MB]
+Get:3 https://download.docker.com/linux/debian bookworm/stable amd64 docker-ce amd64 5:29.7.2-1~debian.12~bookworm [24.0 MB]
+Get:4 https://download.docker.com/linux/debian bookworm/stable amd64 docker-buildx-plugin amd64 0.36.1-1~debian.12~bookworm [17.2 MB]
+Get:5 https://download.docker.com/linux/debian bookworm/stable amd64 docker-ce-rootless-extras amd64 5:29.7.2-1~debian.12~bookworm [10.2 MB]
+Get:6 https://download.docker.com/linux/debian bookworm/stable amd64 docker-compose-plugin amd64 5.4.0-1~debian.12~bookworm [11.1 MB]
+apt-listchanges: Reading changelogs...
+Fetched 102 MB in 2s (46.7 MB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 96126 files and directories currently installed.)
+Preparing to unpack .../0-docker-ce-cli_5%3a29.7.2-1~debian.12~bookworm_amd64.deb ...
+Unpacking docker-ce-cli (5:29.7.2-1~debian.12~bookworm) over (5:29.7.1-1~debian.12~bookworm) ...
+Preparing to unpack .../1-containerd.io_2.3.3-1~debian.12~bookworm_amd64.deb ...
+Unpacking containerd.io (2.3.3-1~debian.12~bookworm) over (2.2.6-1~debian.12~bookworm) ...
+Preparing to unpack .../2-docker-ce_5%3a29.7.2-1~debian.12~bookworm_amd64.deb ...
+Unpacking docker-ce (5:29.7.2-1~debian.12~bookworm) over (5:29.7.1-1~debian.12~bookworm) ...
+Preparing to unpack .../3-bind9-host_1%3a9.18.49-1~deb12u2_amd64.deb ...
+Unpacking bind9-host (1:9.18.49-1~deb12u2) over (1:9.18.49-1~deb12u1) ...
+Preparing to unpack .../4-bind9-dnsutils_1%3a9.18.49-1~deb12u2_amd64.deb ...
+Unpacking bind9-dnsutils (1:9.18.49-1~deb12u2) over (1:9.18.49-1~deb12u1) ...
+Preparing to unpack .../5-bind9-libs_1%3a9.18.49-1~deb12u2_amd64.deb ...
+Unpacking bind9-libs:amd64 (1:9.18.49-1~deb12u2) over (1:9.18.49-1~deb12u1) ...
+Preparing to unpack .../6-dnsutils_1%3a9.18.49-1~deb12u2_all.deb ...
+Unpacking dnsutils (1:9.18.49-1~deb12u2) over (1:9.18.49-1~deb12u1) ...
+Preparing to unpack .../7-docker-buildx-plugin_0.36.1-1~debian.12~bookworm_amd64.deb ...
+Unpacking docker-buildx-plugin (0.36.1-1~debian.12~bookworm) over (0.36.0-1~debian.12~bookworm) ...
+Preparing to unpack .../8-docker-ce-rootless-extras_5%3a29.7.2-1~debian.12~bookworm_amd64.deb ...
+Unpacking docker-ce-rootless-extras (5:29.7.2-1~debian.12~bookworm) over (5:29.7.1-1~debian.12~bookworm) ...
+Preparing to unpack .../9-docker-compose-plugin_5.4.0-1~debian.12~bookworm_amd64.deb ...
+Unpacking docker-compose-plugin (5.4.0-1~debian.12~bookworm) over (5.3.1-1~debian.12~bookworm) ...
+Setting up bind9-libs:amd64 (1:9.18.49-1~deb12u2) ...
+Setting up docker-buildx-plugin (0.36.1-1~debian.12~bookworm) ...
+Setting up containerd.io (2.3.3-1~debian.12~bookworm) ...
+Setting up docker-compose-plugin (5.4.0-1~debian.12~bookworm) ...
+Setting up docker-ce-cli (5:29.7.2-1~debian.12~bookworm) ...
+Setting up docker-ce-rootless-extras (5:29.7.2-1~debian.12~bookworm) ...
+Setting up bind9-host (1:9.18.49-1~deb12u2) ...
+Setting up docker-ce (5:29.7.2-1~debian.12~bookworm) ...
+Setting up bind9-dnsutils (1:9.18.49-1~deb12u2) ...
+Setting up dnsutils (1:9.18.49-1~deb12u2) ...
+Processing triggers for libc-bin (2.36-9+deb12u14) ...
+Processing triggers for man-db (2.11.2-2) ...
+
+══════════════════════════════════════
