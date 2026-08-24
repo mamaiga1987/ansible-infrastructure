@@ -1,0 +1,67 @@
+══════════════════════════════════════
+RAPPORT MAINTENANCE — 2026-08-23
+══════════════════════════════════════
+Serveur    : vps-659fea22
+Date       : 2026-08-23 03:00:03
+
+── Santé Système ──────────────────────
+Disque     : 64% utilisé ✅ OK
+Reboot     : ⚠️ REQUIS
+
+── Nettoyage Docker ───────────────────
+Images     : Total reclaimed space: 0B
+Conteneurs : Total reclaimed space: 0B
+
+── Conteneurs actifs ──────────────────
+jobassistant-backend — Up 2 weeks
+cube — Up 2 weeks
+cubestore — Up 2 weeks
+superset-worker — Up 2 weeks (unhealthy)
+superset-worker-beat — Up 2 weeks (unhealthy)
+superset-backend — Up 2 weeks
+frontend — Up 2 weeks
+chatbot-v2-backend — Up 2 weeks
+chatbot-v2-frontend — Up 2 weeks
+jobassistant-frontend — Up 2 weeks
+doctracker-backend — Up 2 weeks
+ged-v2-backend — Up 2 weeks
+ged-v2-frontend — Up 2 weeks
+debian-n8n-1 — Up 2 weeks
+doctracker-frontend — Up 2 weeks
+chunker-service — Up 2 weeks
+debian-traefik-1 — Up 2 weeks
+adminia-backend — Up 2 weeks
+adminia-frontend — Up 2 weeks
+superset — Up 2 weeks (healthy)
+superset-db — Up 2 weeks (healthy)
+tooltip-api — Up 2 weeks
+superset-cache — Up 2 weeks (healthy)
+chatbot-3f-yvelines — Up 2 weeks
+doctracker-saas-frontend — Up 2 weeks
+doctracker-saas-backend — Up 2 weeks
+doctracker-saas-db — Up 2 weeks (healthy)
+debian-postgres-1 — Up 2 weeks (healthy)
+debian-mysql-1 — Up 2 weeks (healthy)
+
+── Mises à jour sécurité ──────────────
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages were automatically installed and are no longer required:
+  libltdl7 libslirp0 slirp4netns
+Use 'sudo apt autoremove' to remove them.
+The following packages will be upgraded:
+  docker-compose-plugin
+1 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 11.1 MB of archives.
+After this operation, 84.0 kB of additional disk space will be used.
+Get:1 https://download.docker.com/linux/debian bookworm/stable amd64 docker-compose-plugin amd64 5.5.0-1~debian.12~bookworm [11.1 MB]
+apt-listchanges: Reading changelogs...
+Fetched 11.1 MB in 0s (32.3 MB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 96135 files and directories currently installed.)
+Preparing to unpack .../docker-compose-plugin_5.5.0-1~debian.12~bookworm_amd64.deb ...
+Unpacking docker-compose-plugin (5.5.0-1~debian.12~bookworm) over (5.4.0-1~debian.12~bookworm) ...
+Setting up docker-compose-plugin (5.5.0-1~debian.12~bookworm) ...
+
+══════════════════════════════════════
