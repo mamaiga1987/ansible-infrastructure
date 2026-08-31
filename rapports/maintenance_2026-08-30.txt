@@ -1,0 +1,68 @@
+══════════════════════════════════════
+RAPPORT MAINTENANCE — 2026-08-30
+══════════════════════════════════════
+Serveur    : vps-659fea22
+Date       : 2026-08-30 03:00:03
+
+── Santé Système ──────────────────────
+Disque     : 64% utilisé ✅ OK
+Reboot     : ⚠️ REQUIS
+
+── Nettoyage Docker ───────────────────
+Images     : Total reclaimed space: 0B
+Conteneurs : Total reclaimed space: 0B
+
+── Conteneurs actifs ──────────────────
+jobassistant-backend — Up 3 weeks
+cube — Up 3 weeks
+cubestore — Up 3 weeks
+superset-worker — Up 3 weeks (unhealthy)
+superset-worker-beat — Up 3 weeks (unhealthy)
+superset-backend — Up 3 weeks
+frontend — Up 3 weeks
+chatbot-v2-backend — Up 3 weeks
+chatbot-v2-frontend — Up 3 weeks
+jobassistant-frontend — Up 3 weeks
+doctracker-backend — Up 3 weeks
+ged-v2-backend — Up 3 weeks
+ged-v2-frontend — Up 3 weeks
+debian-n8n-1 — Up 3 weeks
+doctracker-frontend — Up 3 weeks
+chunker-service — Up 3 weeks
+debian-traefik-1 — Up 3 weeks
+adminia-backend — Up 3 weeks
+adminia-frontend — Up 3 weeks
+superset — Up 3 weeks (healthy)
+superset-db — Up 3 weeks (healthy)
+tooltip-api — Up 3 weeks
+superset-cache — Up 3 weeks (healthy)
+chatbot-3f-yvelines — Up 3 weeks
+doctracker-saas-frontend — Up 3 weeks
+doctracker-saas-backend — Up 3 weeks
+doctracker-saas-db — Up 3 weeks (healthy)
+debian-postgres-1 — Up 3 weeks (healthy)
+debian-mysql-1 — Up 3 weeks (healthy)
+
+── Mises à jour sécurité ──────────────
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages were automatically installed and are no longer required:
+  libltdl7 libslirp0 slirp4netns
+Use 'sudo apt autoremove' to remove them.
+The following packages will be upgraded:
+  containerd.io
+1 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 22.7 MB of archives.
+After this operation, 24.6 kB of additional disk space will be used.
+Get:1 https://download.docker.com/linux/debian bookworm/stable amd64 containerd.io amd64 2.3.4-1~debian.12~bookworm [22.7 MB]
+apt-listchanges: Reading changelogs...
+Fetched 22.7 MB in 1s (40.6 MB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 96135 files and directories currently installed.)
+Preparing to unpack .../containerd.io_2.3.4-1~debian.12~bookworm_amd64.deb ...
+Unpacking containerd.io (2.3.4-1~debian.12~bookworm) over (2.3.3-1~debian.12~bookworm) ...
+Setting up containerd.io (2.3.4-1~debian.12~bookworm) ...
+Processing triggers for man-db (2.11.2-2) ...
+
+══════════════════════════════════════
